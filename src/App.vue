@@ -136,33 +136,33 @@ provide('cartActions', {
   <Drawer v-if="drawerOpen" />
   <div class="m-1 m-auto rounded-xl bg-white shadow-xl">
     <!-- <Header /> -->
-    <div class="relative p-2">
-      <div class="sticky top-0 mb-2 flex items-center justify-between">
-        <h2 class="text-xl font-bold">Всё</h2>
-        <div class="flex gap-4">
-          <!-- <select
+    <div class="sticky top-0 z-10 flex items-center justify-between bg-white p-2 drop-shadow-md">
+      <h2 class="text-xl font-bold text-gray-400">Всё</h2>
+      <div class="flex gap-4">
+        <!-- <select
             @change="onChangeSelect"
             class="rounded-md border px-3 py-2 outline-none"
             name=""
             id=""
-          >
+          > 
             <option value="title">По названию</option>
             <option value="price">По цене (дорогие)</option>
             <option value="-price">По цене (дешевые)</option>
           </select> -->
 
-          <div class="relative">
-            <img class="absolute left-4 top-3" src="/search.svg" alt="" />
-            <input
-              @input="onChangeSearchInput"
-              class="rounded-md border border-gray-200 py-2 pl-10 pr-4 outline-none focus:border-gray-400"
-              placeholder="Поиск..."
-              type="text"
-            />
-          </div>
+        <div class="relative">
+          <img class="absolute left-4 top-3" src="/search.svg" alt="" />
+          <input
+            @input="onChangeSearchInput"
+            class="rounded-md border border-gray-200 py-2 pl-10 pr-4 outline-none focus:border-gray-400"
+            placeholder="Поиск..."
+            type="text"
+          />
         </div>
       </div>
-      <CardList :items="items" @addToFavorite="addToFavorite" @calculateWeight="calculateWeight" />
+    </div>
+    <div class="relative p-2">
+      <CardList :items="items" @addToFavorite="addToFavorite" />
       <Accordion />
     </div>
     <button

@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, watch } from 'vue'
+import { reactive, ref } from 'vue'
 defineProps({
   id: Number,
   title: String,
@@ -16,50 +16,25 @@ defineProps({
   onClickFavorite: Function
 })
 
-// // const weights = reactive({
-// //   raw: '',
-// //   ready: ''
-// // })
+// const weights = reactive({
+//   raw: '100',
+//   ready: ''
+// })
 
-// // const RAW = ref(0)
-// // const READY = ref(0)
+const weight = ref('100')
 
-// // watch(RAW, (val) => {
-// //   RAW.value = val / 2
-// //   console.log(READY.value)
-// // })
-// // watch(READY, (val) => {
-// //   RAW.value = val * 2
-// //   console.log(RAW.value)
-// // })
+// const READY = ref(weights, 'ready')
 
-// const onChangeRawInput = (event) => {
-//   // this.value = RAW.value * 2
-//   //console.log(event.target.value)
-// }
-
-// const onChangeReadyInput = (event) => {
-//   // = READY.value * 2
-//   // console.log(event.target.value)
-// }
-const weights = reactive({
-  raw: null,
-  ready: null
-})
-
-const RAW = ref(weights, 'raw')
-const READY = ref(weights, 'ready')
-
-watch(RAW, (val) => {
-  // weights.ready = val * 2
-  READY.value = val * 2
-  console.log(weights.ready)
-})
-watch(READY, (val) => {
-  // weights.raw = val / 2
-  RAW.value = val / 2
-  console.log(weights.raw)
-})
+// watch(RAW, (val) => {
+//   // weights.ready = val * 2
+//   READY.value = val * 2
+//   console.log(weights.ready)
+// })
+// watch(READY, (val) => {
+//   // weights.raw = val / 2
+//   RAW.value = val / 2
+//   console.log(weights.raw)
+// })
 </script>
 
 <!-- p-4 cursor-default flex items-center justify-between w-full w-full rounded-lg bg-indigo-300 px-3 hover:-translate-y-1-->
@@ -94,7 +69,8 @@ watch(READY, (val) => {
     <div>
       <div class="mt-1">
         <input
-          v-model="RAW.value"
+          @focus.native="$event.target.select()"
+          v-model="weight"
           type="text"
           name="inpuraw"
           class="peer border-b border-gray-300 bg-inherit py-1 transition-colors focus:border-b-2 focus:border-blue-700 focus:outline-none"
@@ -103,12 +79,12 @@ watch(READY, (val) => {
       <p
         class="left-0 top-1 cursor-text transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-700"
       >
-        готовое: {{ Math.round(READY.value * rate) }}
+        готовое: {{ Math.round(weight * rate) }}
       </p>
       <p
         class="left-0 top-1 cursor-text transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-700"
       >
-        сырое: {{ Math.round(READY.value / rate) }}
+        сырое: {{ Math.round(weight / rate) }}
       </p>
     </div>
     <div></div>
