@@ -103,12 +103,12 @@ watch(READY, (val) => {
       <p
         class="left-0 top-1 cursor-text transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-700"
       >
-        готовое: {{ Math.round(READY.value / rate) }}
+        готовое: {{ Math.round(READY.value * rate) }}
       </p>
       <p
         class="left-0 top-1 cursor-text transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-700"
       >
-        сырое: {{ Math.round(READY.value * rate) }}
+        сырое: {{ Math.round(READY.value / rate) }}
       </p>
     </div>
     <div></div>

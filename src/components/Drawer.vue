@@ -4,13 +4,13 @@ import CartItemList from './CartItemList.vue'
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 h-full w-full bg-black z-10 opacity-70"></div>
-  <div class="bg-white w-96 h-full fixed flex right-0 top-0 z-20 p-8">
+  <div class="fixed left-0 top-0 z-10 h-full w-full bg-black opacity-70"></div>
+  <div class="fixed right-0 top-0 z-20 flex h-full w-full flex-col bg-white p-8">
     <DrawerHead />
 
     <CartItemList />
 
-    <div class="flex flex-col gap-2 my-6">
+    <div class="my-6 flex flex-col gap-2">
       <div class="flex justify-between">
         <p>Итого:</p>
         <span class="font-bold">19 000 руб</span>
@@ -22,7 +22,7 @@ import CartItemList from './CartItemList.vue'
       </div>
     </div>
     <button
-      class="bg-lime-500 text-white w-full rounded-xl py-3 hover:bg-lime-600 active:bg-lime-700 disable:bg-slate-400 transition cursor-pointer"
+      class="disable:bg-slate-400 w-full cursor-pointer rounded-xl bg-lime-500 py-3 text-white transition hover:bg-lime-600 active:bg-lime-700"
     >
       Оформить заказ
     </button>

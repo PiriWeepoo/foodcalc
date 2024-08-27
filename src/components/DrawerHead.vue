@@ -1,7 +1,14 @@
+<script setup>
+import { inject } from 'vue'
+
+const { closeDrawer } = inject('cartActions')
+</script>
+
 <template>
-  <div class="flex items-center gap-2 mb-5">
+  <div class="mb-5 flex items-center gap-2">
     <svg
-      class="opacity-30 cursor-pointer rotate-180 hover:opacity-100 hover:-translate-x-1 transition"
+      @click="closeDrawer"
+      class="rotate-180 cursor-pointer opacity-30 transition hover:-translate-x-1 hover:opacity-100"
       width="16"
       height="14"
       viewBox="0 0 16 14"

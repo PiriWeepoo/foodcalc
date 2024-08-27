@@ -9,6 +9,16 @@ import Accordion from './components/Accordion.vue'
 
 const items = ref([])
 
+const drawerOpen = ref(false)
+
+const closeDrawer = () => {
+  drawerOpen.value = false
+}
+
+const openDrawer = () => {
+  drawerOpen.value = true
+}
+
 const filters = reactive({
   sortBy: 'id',
   searchQuery: ''
@@ -115,12 +125,15 @@ onMounted(async () => {
 
 watch(filters, fetchItems)
 
-provide('addToFavorite', addToFavorite)
+provide('cartActions', {
+  closeDrawer,
+  openDrawer
+})
 // provide('calculateWeight', calculateWeight)
 </script>
 
 <template>
-  <!-- <Drawer /> -->
+  <Drawer v-if="drawerOpen" />
   <div class="m-1 m-auto rounded-xl bg-white shadow-xl">
     <!-- <Header /> -->
     <div class="relative p-2">
@@ -152,5 +165,11 @@ provide('addToFavorite', addToFavorite)
       <CardList :items="items" @addToFavorite="addToFavorite" @calculateWeight="calculateWeight" />
       <Accordion />
     </div>
+    <button
+      class="absolute bottom-2 right-2 h-12 w-12 rounded-full bg-indigo-200 text-4xl text-indigo-300 shadow-lg"
+      @click="openDrawer"
+    >
+      +
+    </button>
   </div>
 </template>
