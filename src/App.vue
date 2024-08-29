@@ -142,7 +142,7 @@ provide('cartActions', {
   <Drawer v-if="drawerOpen" />
   <div class="m-1 m-auto rounded-xl bg-white shadow-xl">
     <!-- <Header /> -->
-    <div class="sticky top-0 z-10 flex items-center justify-between bg-white p-2 drop-shadow-md">
+    <div class="sticky top-0 z-50 flex items-center justify-between bg-white p-2 drop-shadow-md">
       <h2 class="text-xl font-bold text-gray-400">Всё</h2>
       <div class="flex gap-4">
         <!-- <select
