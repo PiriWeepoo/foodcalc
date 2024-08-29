@@ -34,8 +34,7 @@ const addFood = async () => {
 </script>
 
 <template>
-  <div class="fixed left-0 top-0 z-10 h-full w-full bg-black opacity-70"></div>
-  <div class="fixed right-0 top-0 z-20 flex h-full w-full flex-col bg-white p-8">
+  <div class="fixed right-0 top-0 z-50 flex h-full w-full flex-col bg-white p-8">
     <DrawerHead />
 
     <Form />
