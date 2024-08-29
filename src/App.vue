@@ -133,6 +133,12 @@ provide('cartActions', {
 </script>
 
 <template>
+  <button
+    class="absolute bottom-2 right-2 h-12 w-12 rounded-full bg-indigo-200 text-4xl text-indigo-300 shadow-lg"
+    @click="openDrawer"
+  >
+    +
+  </button>
   <Drawer v-if="drawerOpen" />
   <div class="m-1 m-auto rounded-xl bg-white shadow-xl">
     <!-- <Header /> -->
@@ -165,11 +171,5 @@ provide('cartActions', {
       <CardList :items="items" @addToFavorite="addToFavorite" />
       <Accordion />
     </div>
-    <button
-      class="absolute bottom-2 right-2 h-12 w-12 rounded-full bg-indigo-200 text-4xl text-indigo-300 shadow-lg"
-      @click="openDrawer"
-    >
-      +
-    </button>
   </div>
 </template>
