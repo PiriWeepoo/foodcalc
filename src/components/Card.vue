@@ -62,11 +62,11 @@ const rawWeight = computed(() => {
       >
         сырое: {{ Math.round(weight / rate) }}
       </p>
-      <p
+      <!-- <p
         class="left-0 top-1 cursor-text transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-700"
       >
         {{ Math.round(rawWeight) }}
-      </p>
+      </p> -->
     </div>
     <div></div>
   </div>

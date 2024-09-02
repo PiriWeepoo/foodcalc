@@ -18,7 +18,7 @@ const food = {
 const addFood = async () => {
   try {
     const { food } = await axios.post('https://4b0723948a636cf0.mokky.dev/favorites', {
-      title: 'Рисик',
+      title: food.title,
       calories: '350',
       prots: '12',
       fats: '2',

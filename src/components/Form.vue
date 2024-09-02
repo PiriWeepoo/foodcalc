@@ -1,5 +1,41 @@
-<script>
-export default {}
+<script setup>
+import axios from 'axios'
+import { reactive, ref } from 'vue'
+
+import { inject } from 'vue'
+
+const { closeDrawer } = inject('cartActions')
+
+const foods = reactive({
+  title: '',
+  calories: '',
+  prots: '',
+  fats: '',
+  carbs: '',
+  rate: '',
+  ingredients: []
+})
+
+const addFood = async () => {
+  try {
+    const { data } = await axios.post('https://4b0723948a636cf0.mokky.dev/items', {
+      title: foods.title,
+      calories: foods.calories,
+      prots: foods.prots,
+      fats: foods.fats,
+      carbs: foods.carbs,
+      rate: foods.rate,
+      ingredients: []
+    })
+    console.log(data.value)
+    closeDrawer()
+  } catch (error) {
+    console.log(error)
+  }
+}
+const test = () => {
+  console.log(foods.calories)
+}
 </script>
 
 <template>
@@ -7,10 +43,11 @@ export default {}
     class="form r gap-3transition-all relative z-10 flex w-full shrink-0 cursor-pointer snap-start flex-col items-center justify-center duration-300"
   >
     <div class="w-full">
-      <form action="" class="flex flex-col gap-3">
+      <form @submit.prevent="addFood" class="flex flex-col gap-3">
         <div class="flex flex-col items-start">
           <label for="title" class="text-sm font-semibold text-slate-500">Название</label>
           <input
+            v-model="foods.title"
             name="title"
             type="text"
             placeholder="Введите название"
@@ -24,6 +61,7 @@ export default {}
               >Калории (в 100г.)</label
             >
             <input
+              v-model.number="foods.calories"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="numeric"
@@ -32,8 +70,9 @@ export default {}
             />
           </div>
           <div class="flex flex-col">
-            <label for="prots" class="text-sm font-semibold text-slate-500">Коэффициент</label>
+            <label for="rate" class="text-sm font-semibold text-slate-500">Коэффициент</label>
             <input
+              v-model.number="foods.rate"
               @focusin="$event.target.select()"
               type="text"
               inputmode="numeric"
@@ -47,6 +86,7 @@ export default {}
           <div class="flex w-full flex-col items-start">
             <label for="prots" class="text-sm font-semibold text-slate-500">Белки</label>
             <input
+              v-model.number="foods.prots"
               @focusin="$event.target.select()"
               type="text"
               inputmode="numeric"
@@ -57,6 +97,7 @@ export default {}
           <div class="flex w-full flex-col items-start">
             <label for="fats" class="text-sm font-semibold text-slate-500">Жиры</label>
             <input
+              v-model.number="foods.fats"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="numeric"
@@ -67,6 +108,7 @@ export default {}
           <div class="flex w-full flex-col items-start">
             <label for="carbs" class="text-sm font-semibold text-slate-500">Углеводы</label>
             <input
+              v-model.number="foods.carbs"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="numeric"
@@ -78,6 +120,7 @@ export default {}
 
         <div class="inline-flex items-center gap-5">
           <button
+            type="submit"
             class="hover:transiton mt-6 w-full rounded-xl bg-indigo-400 py-3 text-sm font-semibold text-slate-100 shadow-lg shadow-slate-300 transition-all hover:scale-110 focus:scale-110 focus:outline-none"
           >
             Добавить
