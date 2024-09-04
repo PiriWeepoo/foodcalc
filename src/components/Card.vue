@@ -24,50 +24,86 @@ const rawWeight = computed(() => {
 </script>
 
 <!-- p-4 cursor-default flex items-center justify-between w-full w-full rounded-lg bg-indigo-300 px-3 hover:-translate-y-1-->
-
+<!-- grid grid-cols-[50px_50px_50px] -->
 <template>
-  <div
-    class="relative flex cursor-pointer items-center justify-between gap-1 rounded-xl border border-slate-100 bg-indigo-50 p-1 px-3 transition hover:shadow-xl"
-  >
-    <div class="mt-2 flex flex-col gap-2">
-      <div>
-        <p class="text-l text-indigo-900">{{ title }}</p>
-        <p class="text-2xl font-black text-indigo-300">{{ calories }}</p>
-      </div>
-      <div class="grid grid-cols-[50px_50px_50px]">
+  <div class="card">
+    <div class="card__header">
+      <h2 class="card__title">{{ title }}</h2>
+      <p class="card__cal">{{ calories }}</p>
+    </div>
+    <div class="card__info">
+      <div class="">
         <p>Б: {{ prots }}</p>
         <p>Ж: {{ fats }}</p>
         <p>У: {{ carbs }}</p>
-        <p class="text-green-900">Кэф: {{ rate }}</p>
+        <p class="">Кэф: {{ rate }}</p>
+      </div>
+      <div>
+        <div class="">
+          <input
+            @focus.native="$event.target.select()"
+            v-model="weight"
+            type="text"
+            inputmode="numeric"
+            name="inpuraw"
+            class="peer border-b border-gray-300 bg-inherit py-1 transition-colors focus:border-b-2 focus:border-blue-700 focus:outline-none"
+          />
+        </div>
+        <p class="">готовое: {{ Math.round(weight * rate) }}</p>
+        <p class="">сырое: {{ Math.round(weight / rate) }}</p>
+        <!-- <p
+          class=""
+        >
+          {{ Math.round(rawWeight) }}
+        </p> -->
       </div>
     </div>
-    <div>
-      <div class="mt-1">
-        <input
-          @focus.native="$event.target.select()"
-          v-model="weight"
-          type="text"
-          inputmode="numeric"
-          name="inpuraw"
-          class="peer border-b border-gray-300 bg-inherit py-1 transition-colors focus:border-b-2 focus:border-blue-700 focus:outline-none"
-        />
-      </div>
-      <p
-        class="left-0 top-1 cursor-text transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-700"
-      >
-        готовое: {{ Math.round(weight * rate) }}
-      </p>
-      <p
-        class="left-0 top-1 cursor-text transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-700"
-      >
-        сырое: {{ Math.round(weight / rate) }}
-      </p>
-      <!-- <p
-        class="left-0 top-1 cursor-text transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-blue-700"
-      >
-        {{ Math.round(rawWeight) }}
-      </p> -->
-    </div>
-    <div></div>
   </div>
 </template>
+
+<style scoped>
+* {
+  color: var(--color-primary);
+}
+.card {
+  cursor: pointer;
+  border-radius: 1em;
+  /* display: grid; */
+  /* padding: 1em; */
+  /* outline-offset: -4px; */
+  filter: drop-shadow(0px 5px 5px rgba(20, 20, 20, 0.4));
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: x-large;
+  padding: 0.2rem 1rem;
+  box-sizing: border-box;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  background-color: var(--color-secondary);
+  /* box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.2); */
+  border-bottom: 1px solid var(--color-primary);
+  align-items: center;
+}
+
+.card__title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.card__cal {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.card__info {
+  display: grid;
+  padding: 4px 1rem;
+  background-color: var(--color-secondary);
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+</style>

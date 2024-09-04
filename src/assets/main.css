@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* :root {
+  --color-primary: #2d3480;
+  --color-secondary: #c4e9ec;
+} */
+
+:root {
+  --color-primary: #c4e9ec;
+  --color-secondary: #2d3480;
+}
+
 body {
-  background-color: rgb(165 180 252);
+  /* background-color: rgb(165 180 252); */
+  background-color: var(--color-primary);
+}
+
+.bg-primary {
+  /* background-color: rgb(165 180 252); */
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  /* background-color: rgb(165 180 252); */
+  background-color: var(--color-secondary);
+}
+
+.text-primary {
+  color: var(--color-primary);
 }

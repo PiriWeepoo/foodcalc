@@ -135,10 +135,12 @@ provide('cartActions', {
 <template>
   <div class="wrapper relative">
     <Drawer v-if="drawerOpen" />
-    <div class="m-1 m-auto rounded-xl bg-white shadow-xl">
+    <div class="m-1 m-auto">
       <!-- <Header /> -->
-      <div class="sticky top-0 z-40 flex items-center justify-between bg-white p-2 drop-shadow-md">
-        <h2 class="text-xl font-bold text-gray-400">Всё</h2>
+      <div
+        class="bg-secondary sticky top-0 z-40 flex items-center justify-between p-2 drop-shadow-md"
+      >
+        <h2 class="text-primary text-xl font-bold">Всё</h2>
         <div class="flex gap-4">
           <!-- <select
               @change="onChangeSelect"
@@ -161,13 +163,13 @@ provide('cartActions', {
           </div>
         </div>
       </div>
-      <div class="relative p-2">
+      <div class="bg-primary relative p-2">
         <CardList :items="items" @addToFavorite="addToFavorite" />
         <Accordion />
       </div>
     </div>
     <button
-      class="fixed bottom-2 right-2 grid h-12 w-12 place-content-center rounded-full bg-indigo-200 text-4xl text-indigo-300 shadow-lg"
+      class="fixed bottom-2 right-2 grid h-12 w-12 place-content-center rounded-full bg-indigo-300 text-5xl text-indigo-300 text-white opacity-50 shadow-lg"
       @click="openDrawer"
     >
       +
