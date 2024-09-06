@@ -1,7 +1,7 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 const props = defineProps({
-  id: Number,
+  // id: Number,
   title: String,
   calories: Number,
   prots: Number,
@@ -18,8 +18,13 @@ const props = defineProps({
 
 const weight = ref('100')
 
-const rawWeight = computed(() => {
-  return weight.value / props.rate
+const needProt = ref(props.prots)
+
+// const needWeight = ref(0)
+
+const needWeight = computed(() => {
+  console.log(needProt.value)
+  return Math.round((needProt.value / props.carbs) * 100)
 })
 </script>
 
@@ -33,6 +38,14 @@ const rawWeight = computed(() => {
     </div>
     <div class="card__info">
       <div class="">
+        <input
+          v-model="needProt"
+          class="card-input"
+          type="text"
+          inputmode="numeric"
+          name="inputNeedProt"
+          @focus="$event.target.select()"
+        />
         <p>Б: {{ prots }}</p>
         <p>Ж: {{ fats }}</p>
         <p>У: {{ carbs }}</p>
@@ -51,6 +64,7 @@ const rawWeight = computed(() => {
         </div>
         <p class="">готовое: {{ Math.round(weight * rate) }}</p>
         <p class="">сырое: {{ Math.round(weight / rate) }}</p>
+        <p class="">нужно: {{ needWeight }}</p>
         <!-- <p
           class=""
         >
@@ -105,5 +119,13 @@ const rawWeight = computed(() => {
   grid-template-columns: repeat(2, 1fr);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+}
+
+.card-input {
+  border: 1px solid var(--color-primary);
+  border-radius: 0.4rem;
+  outline: none;
+  color: var(--color-secondary);
+  padding: 0 0.2rem;
 }
 </style>

@@ -6,6 +6,7 @@ import Header from './components/Header.vue'
 import CardList from './components/CardList.vue'
 import Drawer from './components/Drawer.vue'
 import Accordion from './components/Accordion.vue'
+import CardNew from './components/CardNew.vue'
 
 const items = ref([])
 
@@ -164,6 +165,16 @@ provide('cartActions', {
         </div>
       </div>
       <div class="bg-primary relative p-2">
+        <CardNew
+          title="РОЖКИ"
+          :calories="350"
+          :prots="13"
+          :fats="1.5"
+          :carbs="72"
+          :rate="2.1"
+          style="margin-bottom: 1rem"
+        />
+
         <CardList :items="items" @addToFavorite="addToFavorite" />
         <Accordion />
       </div>
