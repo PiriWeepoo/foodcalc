@@ -8,13 +8,35 @@
 } */
 
 :root {
-  --color-primary: #c4e9ec;
-  --color-secondary: #2d3480;
+  --color-bg-main: #4a7766;
+  --color-bg-accent: #ece7e2;
+  --color-text-main: #575757;
+  --color-text-accent: #fdf1f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-accent: #4a7766;
+    --color-bg-main: #ece7e2;
+    --color-text-accent: #575757;
+    --color-text-main: #fdf1f5;
+  }
 }
 
 body {
   /* background-color: rgb(165 180 252); */
-  background-color: var(--color-primary);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-accent);
+}
+
+.color-accent {
+  background-color: var(--color-bg-accent);
+  color: var(--color-text-main);
+}
+
+.color-main {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-accent);
 }
 
 .bg-primary {
@@ -28,5 +50,5 @@ body {
 }
 
 .text-primary {
-  color: var(--color-primary);
+  color: var(--color-text-light);
 }

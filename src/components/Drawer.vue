@@ -7,7 +7,7 @@ import Form from './Form.vue'
 </script>
 
 <template>
-  <div class="fixed right-0 top-0 z-50 flex h-full w-full flex-col bg-white p-8">
+  <div class="color-accent fixed right-0 top-0 z-50 flex h-full w-full flex-col p-8">
     <DrawerHead />
 
     <Form />

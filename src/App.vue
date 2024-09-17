@@ -138,10 +138,8 @@ provide('cartActions', {
     <Drawer v-if="drawerOpen" />
     <div class="m-1 m-auto">
       <!-- <Header /> -->
-      <div
-        class="bg-secondary sticky top-0 z-40 flex items-center justify-between p-2 drop-shadow-md"
-      >
-        <h2 class="text-primary text-xl font-bold">Всё</h2>
+      <div class="sticky top-0 z-40 flex items-center justify-between p-2 drop-shadow-md">
+        <h2 class="text-xl font-bold">Всё</h2>
         <div class="flex gap-4">
           <!-- <select
               @change="onChangeSelect"
@@ -157,7 +155,7 @@ provide('cartActions', {
             <img class="absolute left-4 top-3" src="/search.svg" alt="" />
             <input
               @input="onChangeSearchInput"
-              class="rounded-md border border-gray-200 py-2 pl-10 pr-4 outline-none focus:border-gray-400"
+              class="color-accent rounded-md border border-current py-2 pl-10 pr-4 opacity-50 outline-none focus:opacity-100"
               placeholder="Поиск..."
               type="text"
             />
@@ -180,10 +178,21 @@ provide('cartActions', {
       </div>
     </div>
     <button
-      class="fixed bottom-2 right-2 grid h-12 w-12 place-content-center rounded-full bg-indigo-300 text-5xl text-indigo-300 text-white opacity-50 shadow-lg"
+      class="color-accent fixed bottom-2 right-2 h-12 w-12 rounded-full text-5xl opacity-50 shadow-lg"
       @click="openDrawer"
     >
-      +
+      <svg
+        class="m-auto"
+        width="80%"
+        height="80%"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"
+        fill="currentColor"
+      >
+        <path
+          d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+        />
+      </svg>
     </button>
   </div>
 </template>

@@ -26,12 +26,34 @@ const needWeight = computed(() => {
   console.log(needProt.value)
   return Math.round((needProt.value / props.carbs) * 100)
 })
+
+//===============================//
+// const bjuNeed = reactive({
+//   prots: null,
+//   carbs: null,
+//   fats: null,
+//   weghts: null
+// })
+
+// const PROT = toRef(bjuNeed, 'prots')
+// const CARB = toRef(bjuNeed, 'carbs')
+// const FAT = toRef(bjuNeed, 'fats')
+// const WEIGHT = toRef(bjuNeed, 'weights')
+
+// watch(PROT, (val) => {
+//   bjuNeed.prots = val * 2.3
+// })
+// watch(OGRN, (val) => {
+//   bjuNeed.inn = val / 2.3
+// })
+
+//===============================//
 </script>
 
 <!-- p-4 cursor-default flex items-center justify-between w-full w-full rounded-lg bg-indigo-300 px-3 hover:-translate-y-1-->
 <!-- grid grid-cols-[50px_50px_50px] -->
 <template>
-  <div class="card">
+  <div class="card color-accent">
     <div class="card__header">
       <h2 class="card__title">{{ title }}</h2>
       <p class="card__cal">{{ calories }}</p>
@@ -55,11 +77,11 @@ const needWeight = computed(() => {
         <div class="">
           <input
             @focus.passive="$event.target.select()"
-            v-model="weight"
+            v-model="needWeight"
             type="text"
             inputmode="numeric"
             name="inpuraw"
-            class="peer border-b border-gray-300 bg-inherit py-1 transition-colors focus:border-b-2 focus:border-blue-700 focus:outline-none"
+            class="peer border-b border-current bg-inherit py-1 transition-colors focus:border-b-2 focus:border-current focus:outline-none"
           />
         </div>
         <p class="">готовое: {{ Math.round(weight * rate) }}</p>
@@ -76,9 +98,6 @@ const needWeight = computed(() => {
 </template>
 
 <style scoped>
-* {
-  color: var(--color-primary);
-}
 .card {
   cursor: pointer;
   border-radius: 1em;
@@ -96,9 +115,7 @@ const needWeight = computed(() => {
   box-sizing: border-box;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  background-color: var(--color-secondary);
   /* box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.2); */
-  border-bottom: 1px solid var(--color-primary);
   align-items: center;
 }
 
@@ -115,17 +132,15 @@ const needWeight = computed(() => {
 .card__info {
   display: grid;
   padding: 4px 1rem;
-  background-color: var(--color-secondary);
   grid-template-columns: repeat(2, 1fr);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
 
 .card-input {
-  border: 1px solid var(--color-primary);
+  border: 1px solid currentColor;
   border-radius: 0.4rem;
   outline: none;
-  color: var(--color-secondary);
   padding: 0 0.2rem;
 }
 </style>

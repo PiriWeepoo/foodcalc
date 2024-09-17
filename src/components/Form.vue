@@ -45,75 +45,73 @@ const test = () => {
     <div class="w-full">
       <form @submit.prevent="addFood" class="flex flex-col gap-3">
         <div class="flex flex-col items-start">
-          <label for="title" class="text-sm font-semibold text-slate-500">Название</label>
+          <label for="title" class="text-sm font-semibold">Название</label>
           <input
             v-model="foods.title"
             name="title"
             type="text"
             placeholder="Введите название"
-            class="w-full border-0 border-b-2 border-indigo-400 bg-transparent py-px pl-0 text-slate-600 outline-none placeholder:text-xs placeholder:text-slate-300 focus:outline-none focus:ring-inset"
+            class="w-full border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-inset"
           />
         </div>
 
         <div class="grid grid-cols-2 gap-4">
           <div class="flex flex-col">
-            <label for="calories" class="text-sm font-semibold text-slate-500"
-              >Калории (в 100г.)</label
-            >
+            <label for="calories" class="text-sm font-semibold">Калории (в 100г.)</label>
             <input
               v-model.number="foods.calories"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="numeric"
               placeholder="ккал"
-              class="box-border border-0 border-b-2 border-indigo-400 bg-transparent py-px pl-0 text-slate-600 outline-none placeholder:text-xs placeholder:text-slate-300 focus:outline-none focus:ring-0"
+              class="box-border border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
             />
           </div>
           <div class="flex flex-col">
-            <label for="rate" class="text-sm font-semibold text-slate-500">Коэффициент</label>
+            <label for="rate" class="text-sm font-semibold">Коэффициент</label>
             <input
               v-model.number="foods.rate"
               @focusin="$event.target.select()"
               type="text"
               inputmode="numeric"
               placeholder="коэффициент"
-              class="box-border border-0 border-b-2 border-indigo-400 bg-transparent py-px pl-0 text-slate-600 outline-none placeholder:text-xs placeholder:text-slate-300 focus:outline-none focus:ring-0"
+              class="box-border border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
             />
           </div>
         </div>
 
         <div class="grid grid-cols-3 gap-4">
           <div class="flex w-full flex-col items-start">
-            <label for="prots" class="text-sm font-semibold text-slate-500">Белки</label>
+            <label for="prots" class="text-sm font-semibold">Белки</label>
             <input
               v-model.number="foods.prots"
               @focusin="$event.target.select()"
               type="text"
               inputmode="numeric"
               placeholder="в 100г."
-              class="w-full border-0 border-b-2 border-indigo-400 bg-transparent py-px pl-0 text-slate-600 outline-none placeholder:text-xs placeholder:text-slate-300 focus:outline-none focus:ring-0"
+              class="w-full border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
             />
           </div>
           <div class="flex w-full flex-col items-start">
-            <label for="fats" class="text-sm font-semibold text-slate-500">Жиры</label>
+            <label for="fats" class="text-sm font-semibold">Жиры</label>
             <input
               v-model.number="foods.fats"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="numeric"
               placeholder="в 100г."
-              class="w-full border-0 border-b-2 border-indigo-400 bg-transparent py-px pl-0 text-slate-600 outline-none placeholder:text-xs placeholder:text-slate-300 focus:outline-none focus:ring-0"
+              class="w-full border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
             />
           </div>
           <div class="flex w-full flex-col items-start">
-            <label for="carbs" class="text-sm font-semibold text-slate-500">Углеводы</label>
+            <label for="carbs" class="text-sm font-semibold">Углеводы</label>
             <input
               v-model.number="foods.carbs"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="numeric"
               placeholder="в 100г."
-              class="w-full border-0 border-b-2 border-indigo-400 bg-transparent py-px pl-0 text-slate-600 outline-none placeholder:text-xs placeholder:text-slate-300 focus:outline-none focus:ring-0"
+              class="form-input w-full border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
             />
           </div>
         </div>
@@ -121,7 +119,7 @@ const test = () => {
         <div class="inline-flex items-center gap-5">
           <button
             type="submit"
-            class="hover:transiton mt-6 w-full rounded-xl bg-indigo-400 py-3 text-sm font-semibold text-slate-100 shadow-lg shadow-slate-300 transition-all hover:scale-110 focus:scale-110 focus:outline-none"
+            class="hover:transiton color-main mt-6 w-full rounded-xl py-3 text-sm font-semibold shadow-lg shadow-slate-300 transition-all hover:scale-105 focus:scale-100 focus:outline-none"
           >
             Добавить
           </button>
@@ -130,3 +128,5 @@ const test = () => {
     </div>
   </div>
 </template>
+
+<style scoped></style>

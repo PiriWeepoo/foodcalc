@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 flex justify-between border-b border-slate-300 px-8 py-4">
+  <header class="sticky top-0 flex justify-between border-b border-current px-8 py-4">
     <div class="flex items-center gap-4">
       <img src="/logo.png" alt="logo" />
       <div>

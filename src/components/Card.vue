@@ -26,7 +26,7 @@ const rawWeight = computed(() => {
 <!-- p-4 cursor-default flex items-center justify-between w-full w-full rounded-lg bg-indigo-300 px-3 hover:-translate-y-1-->
 <!-- grid grid-cols-[50px_50px_50px] -->
 <template>
-  <div class="card">
+  <div class="card color-accent">
     <div class="card__header">
       <h2 class="card__title">{{ title }}</h2>
       <p class="card__cal">{{ calories }}</p>
@@ -63,7 +63,7 @@ const rawWeight = computed(() => {
 
 <style scoped>
 * {
-  color: var(--color-primary);
+  /* color: var(--color-primary); */
 }
 .card {
   cursor: pointer;
@@ -82,9 +82,9 @@ const rawWeight = computed(() => {
   box-sizing: border-box;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  background-color: var(--color-secondary);
+  /* background-color: var(--color-secondary); */
   /* box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.2); */
-  border-bottom: 1px solid var(--color-primary);
+  border-bottom: 1px solid currentColor;
   align-items: center;
 }
 
@@ -101,7 +101,7 @@ const rawWeight = computed(() => {
 .card__info {
   display: grid;
   padding: 4px 1rem;
-  background-color: var(--color-secondary);
+  /* background-color: var(--color-secondary); */
   grid-template-columns: repeat(2, 1fr);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
