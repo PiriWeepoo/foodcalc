@@ -151,7 +151,7 @@ watch(FAT, (val) => {
 
         <p class="">готовое: {{ Math.round(bjuNeed.weight * rate) }}</p>
         <p class="">сырое: {{ Math.round(bjuNeed.weight / rate) }}</p>
-        <p class="">нужно: {{ needWeight }}</p>
+        <!-- <p class="">нужно: {{ needWeight }}</p> -->
       </div>
     </div>
   </div>
