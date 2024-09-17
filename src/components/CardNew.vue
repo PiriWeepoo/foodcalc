@@ -102,60 +102,56 @@ watch(FAT, (val) => {
       <h2 class="card__title">{{ title }}</h2>
       <p class="card__cal">{{ calories }}</p>
     </div>
-    <div class="card__info">
-      <div class="grid grid-cols-2">
-        <div class="bju-inputs">
-          <input
-            v-model="bjuNeed.prots"
-            class="card-input"
-            type="text"
-            inputmode="numeric"
-            name="inputNeedProt"
-            @focus="$event.target.select()"
-          />
-          <input
-            v-model="bjuNeed.fats"
-            class="card-input"
-            type="text"
-            inputmode="numeric"
-            name="inputNeedProt"
-            @focus="$event.target.select()"
-          />
-          <input
-            v-model="bjuNeed.carbs"
-            class="card-input"
-            type="text"
-            inputmode="numeric"
-            name="inputNeedProt"
-            @focus="$event.target.select()"
-          />
-        </div>
-        <div class="bju">
-          <p>Б: {{ prots }}</p>
-          <p>Ж: {{ fats }}</p>
-          <p>У: {{ carbs }}</p>
-          <p class="">Кэф: {{ rate }}</p>
-        </div>
+    <div class="grid grid-cols-[minmax(0,_1fr)_64px_minmax(0,_1fr)] gap-3">
+      <div class="card-inputs">
+        <input
+          v-model="bjuNeed.prots"
+          class="card-input"
+          type="text"
+          inputmode="numeric"
+          name="inputNeedProt"
+          :placeholder="'Белки: ' + props.prots"
+          @focus="$event.target.select()"
+        />
+        <input
+          v-model="bjuNeed.fats"
+          class="card-input"
+          type="text"
+          inputmode="numeric"
+          name="inputNeedProt"
+          :placeholder="'Жиры: ' + props.fats"
+          @focus="$event.target.select()"
+        />
+        <input
+          v-model="bjuNeed.carbs"
+          class="card-input"
+          type="text"
+          inputmode="numeric"
+          name="inputNeedCarbs"
+          :placeholder="'Углеводы: ' + props.carbs"
+          @focus="$event.target.select()"
+        />
       </div>
-      <div>
-        <div class="">
-          <input
-            @focus.passive="$event.target.select()"
-            v-model="needWeight"
-            type="text"
-            inputmode="numeric"
-            name="inpuraw"
-            class="peer border-b border-current bg-inherit py-1 transition-colors focus:border-b-2 focus:border-current focus:outline-none"
-          />
-        </div>
-        <p class="">готовое: {{ Math.round(weight * rate) }}</p>
-        <p class="">сырое: {{ Math.round(weight / rate) }}</p>
+      <div class="bju">
+        <p>Б: {{ prots }}</p>
+        <p>Ж: {{ fats }}</p>
+        <p>У: {{ carbs }}</p>
+        <p class="">Кэф: {{ rate }}</p>
+      </div>
+
+      <div class="card-weights">
+        <input
+          @focus.passive="$event.target.select()"
+          v-model="bjuNeed.weight"
+          type="text"
+          inputmode="numeric"
+          name="inpuraw"
+          class="card-input"
+        />
+
+        <p class="">готовое: {{ Math.round(bjuNeed.weight * rate) }}</p>
+        <p class="">сырое: {{ Math.round(bjuNeed.weight / rate) }}</p>
         <p class="">нужно: {{ needWeight }}</p>
-        <!-- <p
-          class=""
-        >
-          {{ Math.round(rawWeight) }}
-        </p> -->
       </div>
     </div>
   </div>
@@ -166,7 +162,7 @@ watch(FAT, (val) => {
   cursor: pointer;
   border-radius: 1em;
   /* display: grid; */
-  /* padding: 1em; */
+  padding: 0 0.5rem;
   /* outline-offset: -4px; */
   filter: drop-shadow(0px 5px 5px rgba(20, 20, 20, 0.4));
 }
@@ -202,6 +198,8 @@ watch(FAT, (val) => {
 }
 
 .card-input {
+  box-sizing: border-box;
+  max-width: -webkit-fill-available;
   border-bottom: 1px solid currentColor;
   background: none;
   /* border-radius: 0.4rem; */
