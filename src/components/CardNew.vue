@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, toRef, watch } from 'vue'
 const props = defineProps({
   // id: Number,
   title: String,
@@ -28,22 +28,66 @@ const needWeight = computed(() => {
 })
 
 //===============================//
-// const bjuNeed = reactive({
-//   prots: null,
-//   carbs: null,
-//   fats: null,
-//   weghts: null
-// })
+const bjuNeed = reactive({
+  prots: null,
+  carbs: null,
+  fats: null,
+  weight: null
+})
 
-// const PROT = toRef(bjuNeed, 'prots')
-// const CARB = toRef(bjuNeed, 'carbs')
-// const FAT = toRef(bjuNeed, 'fats')
-// const WEIGHT = toRef(bjuNeed, 'weights')
+const PROT = toRef(bjuNeed, 'prots')
+const CARB = toRef(bjuNeed, 'carbs')
+const FAT = toRef(bjuNeed, 'fats')
+const WEIGHT = toRef(bjuNeed, 'weight')
 
-// watch(PROT, (val) => {
-//   bjuNeed.prots = val * 2.3
-// })
-// watch(OGRN, (val) => {
+watch(PROT, (val) => {
+  const koef = val / props.prots //parseFloat((val / props.prots).toFixed(2))
+
+  bjuNeed.fats = props.fats * koef
+  bjuNeed.carbs = props.carbs * koef
+  bjuNeed.weight = 100 * koef
+
+  console.clear()
+  console.log('koef=', koef)
+
+  console.log('P=', val)
+  console.log('F=', bjuNeed.fats)
+  console.log('C=', bjuNeed.carbs)
+  console.log('W=', bjuNeed.weight)
+})
+
+watch(CARB, (val) => {
+  const koef = val / props.carbs //parseFloat((val / props.carbs).toFixed(2))
+
+  bjuNeed.fats = props.fats * koef
+  bjuNeed.pro = props.prots * koef
+  bjuNeed.weight = 100 * koef
+
+  console.clear()
+  console.log('koef=', koef)
+
+  console.log('P=', bjuNeed.prots)
+  console.log('F=', bjuNeed.fats)
+  console.log('C=', val)
+  console.log('W=', bjuNeed.weight)
+})
+
+watch(FAT, (val) => {
+  const koef = val / props.fats //parseFloat((val / props.fats).toFixed(2))
+
+  bjuNeed.carbs = props.carbs * koef
+  bjuNeed.prots = props.prots * koef
+  bjuNeed.weight = 100 * koef
+
+  console.clear()
+  console.log('koef=', koef)
+
+  console.log('P=', bjuNeed.prots)
+  console.log('F=', val)
+  console.log('C=', bjuNeed.carbs)
+  console.log('W=', bjuNeed.weight)
+})
+// watch(FAT, (val) => {
 //   bjuNeed.inn = val / 2.3
 // })
 
@@ -59,19 +103,39 @@ const needWeight = computed(() => {
       <p class="card__cal">{{ calories }}</p>
     </div>
     <div class="card__info">
-      <div class="">
-        <input
-          v-model="needProt"
-          class="card-input"
-          type="text"
-          inputmode="numeric"
-          name="inputNeedProt"
-          @focus="$event.target.select()"
-        />
-        <p>Б: {{ prots }}</p>
-        <p>Ж: {{ fats }}</p>
-        <p>У: {{ carbs }}</p>
-        <p class="">Кэф: {{ rate }}</p>
+      <div class="grid grid-cols-2">
+        <div class="bju-inputs">
+          <input
+            v-model="bjuNeed.prots"
+            class="card-input"
+            type="text"
+            inputmode="numeric"
+            name="inputNeedProt"
+            @focus="$event.target.select()"
+          />
+          <input
+            v-model="bjuNeed.fats"
+            class="card-input"
+            type="text"
+            inputmode="numeric"
+            name="inputNeedProt"
+            @focus="$event.target.select()"
+          />
+          <input
+            v-model="bjuNeed.carbs"
+            class="card-input"
+            type="text"
+            inputmode="numeric"
+            name="inputNeedProt"
+            @focus="$event.target.select()"
+          />
+        </div>
+        <div class="bju">
+          <p>Б: {{ prots }}</p>
+          <p>Ж: {{ fats }}</p>
+          <p>У: {{ carbs }}</p>
+          <p class="">Кэф: {{ rate }}</p>
+        </div>
       </div>
       <div>
         <div class="">
@@ -138,9 +202,11 @@ const needWeight = computed(() => {
 }
 
 .card-input {
-  border: 1px solid currentColor;
-  border-radius: 0.4rem;
+  border-bottom: 1px solid currentColor;
+  background: none;
+  /* border-radius: 0.4rem; */
   outline: none;
   padding: 0 0.2rem;
+  margin-bottom: 0.5rem;
 }
 </style>
