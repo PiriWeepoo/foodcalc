@@ -16,16 +16,16 @@ const props = defineProps({
   // onClickFavorite: Function
 })
 
-const weight = ref('100')
+// const weight = ref('100')
 
-const needProt = ref(props.prots)
+// const needProt = ref(props.prots)
 
 // const needWeight = ref(0)
 
-const needWeight = computed(() => {
-  console.log(needProt.value)
-  return Math.round((needProt.value / props.carbs) * 100)
-})
+// const needWeight = computed(() => {
+//   console.log(needProt.value)
+//   return Math.round((needProt.value / props.carbs) * 100)
+// })
 
 //===============================//
 const bjuNeed = reactive({
@@ -40,56 +40,104 @@ const CARB = toRef(bjuNeed, 'carbs')
 const FAT = toRef(bjuNeed, 'fats')
 const WEIGHT = toRef(bjuNeed, 'weight')
 
-watch(PROT, (val) => {
-  const koef = val / props.prots //parseFloat((val / props.prots).toFixed(2))
+// watch(PROT, (val) => {
+//   const koef = parseFloat((val / props.prots).toFixed(2))
 
-  bjuNeed.fats = props.fats * koef
-  bjuNeed.carbs = props.carbs * koef
-  bjuNeed.weight = 100 * koef
+//   bjuNeed.fats = parseFloat((props.fats * koef).toFixed(2))
+//   bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
+//   bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
 
-  console.clear()
-  console.log('koef=', koef)
+//   console.clear()
+//   console.log('koef=', koef)
 
-  console.log('P=', val)
-  console.log('F=', bjuNeed.fats)
-  console.log('C=', bjuNeed.carbs)
-  console.log('W=', bjuNeed.weight)
-})
-
-watch(CARB, (val) => {
-  const koef = val / props.carbs //parseFloat((val / props.carbs).toFixed(2))
-
-  bjuNeed.fats = props.fats * koef
-  bjuNeed.pro = props.prots * koef
-  bjuNeed.weight = 100 * koef
-
-  console.clear()
-  console.log('koef=', koef)
-
-  console.log('P=', bjuNeed.prots)
-  console.log('F=', bjuNeed.fats)
-  console.log('C=', val)
-  console.log('W=', bjuNeed.weight)
-})
-
-watch(FAT, (val) => {
-  const koef = val / props.fats //parseFloat((val / props.fats).toFixed(2))
-
-  bjuNeed.carbs = props.carbs * koef
-  bjuNeed.prots = props.prots * koef
-  bjuNeed.weight = 100 * koef
-
-  console.clear()
-  console.log('koef=', koef)
-
-  console.log('P=', bjuNeed.prots)
-  console.log('F=', val)
-  console.log('C=', bjuNeed.carbs)
-  console.log('W=', bjuNeed.weight)
-})
-// watch(FAT, (val) => {
-//   bjuNeed.inn = val / 2.3
+//   console.log('P=', val)
+//   console.log('F=', bjuNeed.fats)
+//   console.log('C=', bjuNeed.carbs)
+//   console.log('W=', bjuNeed.weight)
 // })
+
+// watch(CARB, (val) => {
+//   const koef = parseFloat((val / props.carbs).toFixed(2))
+
+//   bjuNeed.prots = parseFloat((props.prots * koef).toFixed(2))
+//   bjuNeed.fats = parseFloat((props.fats * koef).toFixed(2))
+//   bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
+
+//   console.clear()
+//   console.log('koef=', koef)
+
+//   console.log('P=', bjuNeed.prots)
+//   console.log('F=', bjuNeed.fats)
+//   console.log('C=', val)
+//   console.log('W=', bjuNeed.weight)
+// })
+
+// watch(FAT, (val) => {
+//   const koef = parseFloat((val / props.fats).toFixed(2))
+
+//   bjuNeed.prots = parseFloat((props.prots * koef).toFixed(2))
+//   bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
+//   bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
+
+//   console.clear()
+//   console.log('koef=', koef)
+
+//   console.log('P=', bjuNeed.prots)
+//   console.log('F=', val)
+//   console.log('C=', bjuNeed.carbs)
+//   console.log('W=', bjuNeed.weight)
+// })
+
+//===============================//
+
+const changeInputProt = () => {
+  const koef = bjuNeed.prots / props.prots //parseFloat((val / props.fats).toFixed(2))
+
+  bjuNeed.fats = props.fats * koef
+  bjuNeed.carbs = props.carbs * koef
+  bjuNeed.weight = 100 * koef
+
+  console.clear()
+  console.log('val=', bjuNeed.prots)
+  console.log('koef=', koef)
+
+  console.log('P=', bjuNeed.prots)
+  console.log('F=', bjuNeed.fats)
+  console.log('C=', bjuNeed.carbs)
+  console.log('W=', bjuNeed.weight)
+}
+
+const changeInputCarb = () => {
+  const koef = bjuNeed.carbs / props.carbs //parseFloat((val / props.fats).toFixed(2))
+
+  bjuNeed.fats = parseFloat((props.fats * koef).toFixed(2))
+  bjuNeed.prots = parseFloat((props.prots * koef).toFixed(2))
+  bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
+
+  console.clear()
+  console.log('koef=', koef)
+
+  console.log('P=', bjuNeed.prots)
+  console.log('F=', bjuNeed.fats)
+  console.log('C=', bjuNeed.carbs)
+  console.log('W=', bjuNeed.weight)
+}
+
+const changeInputFat = () => {
+  const koef = bjuNeed.fats / props.fats //parseFloat((val / props.fats).toFixed(2))
+
+  bjuNeed.prots = props.prots * koef
+  bjuNeed.carbs = props.carbs * koef
+  bjuNeed.weight = 100 * koef
+
+  console.clear()
+  console.log('koef=', koef)
+
+  console.log('P=', bjuNeed.prots)
+  console.log('F=', bjuNeed.fats)
+  console.log('C=', bjuNeed.carbs)
+  console.log('W=', bjuNeed.weight)
+}
 
 //===============================//
 </script>
@@ -102,33 +150,36 @@ watch(FAT, (val) => {
       <h2 class="card__title">{{ title }}</h2>
       <p class="card__cal">{{ calories }}</p>
     </div>
-    <div class="grid grid-cols-[minmax(0,_1fr)_64px_minmax(0,_1fr)] gap-3">
+    <div class="card__info">
       <div class="card-inputs">
         <input
-          v-model="bjuNeed.prots"
+          v-model.number="bjuNeed.prots"
           class="card-input"
           type="text"
           inputmode="numeric"
           name="inputNeedProt"
           :placeholder="'Белки: ' + props.prots"
+          @input="changeInputProt"
           @focus="$event.target.select()"
         />
         <input
-          v-model="bjuNeed.fats"
+          v-model.number="bjuNeed.fats"
           class="card-input"
           type="text"
           inputmode="numeric"
           name="inputNeedProt"
           :placeholder="'Жиры: ' + props.fats"
+          @input="changeInputFat"
           @focus="$event.target.select()"
         />
         <input
-          v-model="bjuNeed.carbs"
+          v-model.number="bjuNeed.carbs"
           class="card-input"
           type="text"
           inputmode="numeric"
           name="inputNeedCarbs"
           :placeholder="'Углеводы: ' + props.carbs"
+          @input="changeInputCarb"
           @focus="$event.target.select()"
         />
       </div>
@@ -162,7 +213,6 @@ watch(FAT, (val) => {
   cursor: pointer;
   border-radius: 1em;
   /* display: grid; */
-  padding: 0 0.5rem;
   /* outline-offset: -4px; */
   filter: drop-shadow(0px 5px 5px rgba(20, 20, 20, 0.4));
 }
@@ -170,13 +220,14 @@ watch(FAT, (val) => {
 .card__header {
   display: flex;
   justify-content: space-between;
-  font-size: x-large;
+  /* font-size: x-large; */
   padding: 0.2rem 1rem;
   box-sizing: border-box;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   /* box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.2); */
   align-items: center;
+  border-bottom: 1px solid currentColor;
 }
 
 .card__title {
@@ -191,8 +242,9 @@ watch(FAT, (val) => {
 
 .card__info {
   display: grid;
-  padding: 4px 1rem;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.5rem 0.5rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
