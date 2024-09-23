@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive, ref, toRef, watch } from 'vue'
+import { reactive, toRef } from 'vue'
 const props = defineProps({
   // id: Number,
   title: String,
@@ -8,12 +8,6 @@ const props = defineProps({
   fats: Number,
   carbs: Number,
   rate: Number
-  // imageUrl: String,
-  // isFavorite: Boolean,
-  // isAdded: Boolean,
-  // onClickAdd: Function,
-  // onChangeWeight: Function,
-  // onClickFavorite: Function
 })
 
 // const weight = ref('100')
@@ -93,9 +87,9 @@ const WEIGHT = toRef(bjuNeed, 'weight')
 const changeInputProt = () => {
   const koef = bjuNeed.prots / props.prots //parseFloat((val / props.fats).toFixed(2))
 
-  bjuNeed.fats = props.fats * koef
-  bjuNeed.carbs = props.carbs * koef
-  bjuNeed.weight = 100 * koef
+  bjuNeed.fats = parseFloat((props.fats * koef).toFixed(2))
+  bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
+  bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
 
   console.clear()
   console.log('val=', bjuNeed.prots)
@@ -126,9 +120,9 @@ const changeInputCarb = () => {
 const changeInputFat = () => {
   const koef = bjuNeed.fats / props.fats //parseFloat((val / props.fats).toFixed(2))
 
-  bjuNeed.prots = props.prots * koef
-  bjuNeed.carbs = props.carbs * koef
-  bjuNeed.weight = 100 * koef
+  bjuNeed.prots = parseFloat((props.prots * koef).toFixed(2))
+  bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
+  bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
 
   console.clear()
   console.log('koef=', koef)
@@ -148,7 +142,7 @@ const changeInputFat = () => {
   <div class="card color-accent">
     <div class="card__header">
       <h2 class="card__title">{{ title }}</h2>
-      <p class="card__cal">{{ calories }}</p>
+      <p class="card__cal color-text-accent">{{ calories }}</p>
     </div>
     <div class="card__info">
       <div class="card-inputs">

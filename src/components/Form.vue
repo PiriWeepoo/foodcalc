@@ -55,7 +55,7 @@ const test = () => {
           />
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-col">
             <label for="calories" class="text-sm font-semibold">Калории (в 100г.)</label>
             <input
@@ -64,6 +64,17 @@ const test = () => {
               type="text"
               inputmode="numeric"
               placeholder="ккал"
+              class="box-border border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="rate" class="text-sm font-semibold">Коэффициент</label>
+            <input
+              v-model.number="foods.rate"
+              @focusin="$event.target.select()"
+              type="text"
+              inputmode="numeric"
+              placeholder="коэффициент"
               class="box-border border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
             />
           </div>
@@ -119,7 +130,7 @@ const test = () => {
         <div class="inline-flex items-center gap-5">
           <button
             type="submit"
-            class="hover:transiton color-main mt-6 w-full rounded-xl py-3 text-sm font-semibold shadow-lg shadow-slate-300 transition-all hover:scale-105 focus:scale-100 focus:outline-none"
+            class="hover:transiton color-bg-accent mt-6 w-full rounded-xl py-3 text-sm font-semibold shadow-lg shadow-stone-900/40 transition-all hover:scale-105 focus:scale-100 focus:outline-none"
           >
             Добавить
           </button>

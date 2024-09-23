@@ -134,7 +134,7 @@ provide('cartActions', {
 </script>
 
 <template>
-  <div class="wrapper relative">
+  <div class="wrapper fixed relative">
     <Drawer v-if="drawerOpen" />
     <div class="m-1 m-auto">
       <!-- <Header /> -->
@@ -155,7 +155,7 @@ provide('cartActions', {
             <img class="absolute left-4 top-3" src="/search.svg" alt="" />
             <input
               @input="onChangeSearchInput"
-              class="color-accent rounded-md border border-current py-2 pl-10 pr-4 opacity-50 outline-none focus:opacity-100"
+              class="color-bg-accent rounded-md border border-current py-2 pl-10 pr-4 opacity-50 outline-none focus:opacity-100"
               placeholder="Поиск..."
               type="text"
             />
@@ -178,7 +178,7 @@ provide('cartActions', {
       </div>
     </div>
     <button
-      class="color-accent fixed bottom-2 right-2 h-12 w-12 rounded-full text-5xl opacity-50 shadow-lg"
+      class="color-text-accent fixed bottom-2 right-2 h-12 w-12 rounded-full text-5xl opacity-50 shadow-lg"
       @click="openDrawer"
     >
       <svg

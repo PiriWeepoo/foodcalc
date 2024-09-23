@@ -16,22 +16,41 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg-accent: #4a7766;
-    --color-bg-main: #ece7e2;
-    --color-text-accent: #575757;
-    --color-text-main: #fdf1f5;
+    --color-bg-accent: #353535;
+    --color-bg-main: #292929;
+    --color-text-accent: #4a7766;
+    --color-text-main: #ece7e2;
+    --color-accent: #4a7766;
   }
 }
 
 body {
   /* background-color: rgb(165 180 252); */
   background-color: var(--color-bg-main);
-  color: var(--color-text-accent);
+  color: var(--color-text-main);
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  opacity: 80%;
+  color: currentColor;
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 80%;
+  color: currentColor;
 }
 
 .color-accent {
   background-color: var(--color-bg-accent);
   color: var(--color-text-main);
+}
+
+.color-bg-accent {
+  background-color: var(--color-accent);
+}
+.color-text-accent {
+  color: var(--color-accent);
 }
 
 .color-main {

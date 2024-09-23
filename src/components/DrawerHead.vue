@@ -17,14 +17,14 @@ const { closeDrawer } = inject('cartActions')
     >
       <path
         d="M1 7H14.7143"
-        stroke="black"
+        stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M8.71436 1L14.7144 7L8.71436 13"
-        stroke="black"
+        stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"

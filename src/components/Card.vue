@@ -29,7 +29,7 @@ const rawWeight = computed(() => {
   <div class="card color-accent">
     <div class="card__header">
       <h2 class="card__title">{{ title }}</h2>
-      <p class="card__cal">{{ calories }}</p>
+      <p class="card__cal color-text-accent">{{ calories }}</p>
     </div>
     <div class="card__info">
       <div class="">
