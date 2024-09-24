@@ -11,7 +11,9 @@
   --color-bg-main: #4a7766;
   --color-bg-accent: #ece7e2;
   --color-text-main: #575757;
-  --color-text-accent: #fdf1f5;
+  --color-text-accent: #ece7e2;
+  --color-accent: #4a7766;
+  --color-light: #ece7e2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,13 +23,14 @@
     --color-text-accent: #4a7766;
     --color-text-main: #ece7e2;
     --color-accent: #4a7766;
+    --color-light: #ece7e2;
   }
 }
 
 body {
   /* background-color: rgb(165 180 252); */
   background-color: var(--color-bg-main);
-  color: var(--color-text-main);
+  color: var(--color-text-accent);
 }
 
 input::-moz-placeholder,

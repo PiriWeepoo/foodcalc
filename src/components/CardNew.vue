@@ -181,7 +181,7 @@ const changeInputFat = () => {
         <p>Б: {{ prots }}</p>
         <p>Ж: {{ fats }}</p>
         <p>У: {{ carbs }}</p>
-        <p class="">Кэф: {{ rate }}</p>
+        <p class="">Кф: {{ rate }}</p>
       </div>
 
       <div class="card-weights">
@@ -236,7 +236,7 @@ const changeInputFat = () => {
 
 .card__info {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
   gap: 0.75rem;
   padding: 0.5rem 0.5rem;
   border-bottom-left-radius: 1rem;

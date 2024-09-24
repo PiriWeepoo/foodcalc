@@ -13,6 +13,7 @@ const items = ref([])
 const drawerOpen = ref(false)
 
 const closeDrawer = () => {
+  fetchItems()
   drawerOpen.value = false
 }
 
@@ -139,7 +140,9 @@ provide('cartActions', {
     <div class="m-1 m-auto">
       <!-- <Header /> -->
       <div class="flex items-center justify-between p-2 drop-shadow-md">
-        <h2 class="text-xl font-bold">Всё</h2>
+        <button class="" @click="fetchItems">
+          <h2 class="text-xl font-bold">Всё</h2>
+        </button>
         <div class="flex gap-4">
           <!-- <select
               @change="onChangeSelect"
@@ -155,7 +158,7 @@ provide('cartActions', {
             <img class="absolute left-4 top-3" src="/search.svg" alt="" />
             <input
               @input="onChangeSearchInput"
-              class="color-bg-accent rounded-md border border-current py-2 pl-10 pr-4 opacity-50 outline-none focus:opacity-100"
+              class="rounded-md border border-current py-2 pl-10 pr-4 opacity-50 outline-none focus:opacity-100"
               placeholder="Поиск..."
               type="text"
             />
@@ -163,7 +166,7 @@ provide('cartActions', {
         </div>
       </div>
       <div class="bg-primary relative p-2">
-        <CardNew
+        <!-- <CardNew
           title="РОЖКИ"
           :calories="350"
           :prots="13"
@@ -171,26 +174,25 @@ provide('cartActions', {
           :carbs="72"
           :rate="2.1"
           style="margin-bottom: 1rem"
-        />
+        /> -->
 
-        <CardList :items="items" @addToFavorite="addToFavorite" />
+        <CardList :items="items" />
         <Accordion />
       </div>
     </div>
     <button
-      class="color-text-accent fixed bottom-2 right-2 h-12 w-12 rounded-full text-5xl opacity-50 shadow-lg"
+      class="color-text-accent fixed bottom-2 right-2 opacity-60 drop-shadow-lg"
       @click="openDrawer"
     >
       <svg
-        class="m-auto"
-        width="80%"
-        height="80%"
+        height="50"
+        viewBox="0 0 24 24"
+        width="50"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 448 512"
         fill="currentColor"
       >
         <path
-          d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+          d="m12 0a12 12 0 1 0 12 12 12.013 12.013 0 0 0 -12-12zm4 13h-3v3a1 1 0 0 1 -2 0v-3h-3a1 1 0 0 1 0-2h3v-3a1 1 0 0 1 2 0v3h3a1 1 0 0 1 0 2z"
         />
       </svg>
     </button>
