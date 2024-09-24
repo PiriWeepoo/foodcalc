@@ -248,6 +248,7 @@ const changeInputFat = () => {
   max-width: -webkit-fill-available;
   border-bottom: 1px solid currentColor;
   background: none;
+  border-radius: 0px;
   /* border-radius: 0.4rem; */
   outline: none;
   padding: 0 0.2rem;
