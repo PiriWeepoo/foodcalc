@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, toRef } from 'vue'
+import { reactive, toRef, ref } from 'vue'
 const props = defineProps({
   // id: Number,
   title: String,
@@ -134,71 +134,73 @@ const changeInputFat = () => {
 }
 
 //===============================//
+
+const open = ref(false)
 </script>
 
 <!-- p-4 cursor-default flex items-center justify-between w-full w-full rounded-lg bg-indigo-300 px-3 hover:-translate-y-1-->
 <!-- grid grid-cols-[50px_50px_50px] -->
 <template>
   <div class="card color-accent">
-    <div class="card__header">
+    <div class="card__header" @click="open = !open">
       <h2 class="card__title">{{ title }}</h2>
       <p class="card__cal color-text-accent">{{ calories }}</p>
     </div>
-    <div class="card__info">
-      <div class="card-inputs">
-        <input
-          v-model.number="bjuNeed.prots"
-          class="card-input"
-          type="text"
-          inputmode="numeric"
-          name="inputNeedProt"
-          :placeholder="'Белки: ' + props.prots"
-          @input="changeInputProt"
-          @focus="$event.target.select()"
-        />
-        <input
-          v-model.number="bjuNeed.fats"
-          class="card-input"
-          type="text"
-          inputmode="numeric"
-          name="inputNeedProt"
-          :placeholder="'Жиры: ' + props.fats"
-          @input="changeInputFat"
-          @focus="$event.target.select()"
-        />
-        <input
-          v-model.number="bjuNeed.carbs"
-          class="card-input"
-          type="text"
-          inputmode="numeric"
-          name="inputNeedCarbs"
-          :placeholder="'Углеводы: ' + props.carbs"
-          @input="changeInputCarb"
-          @focus="$event.target.select()"
-        />
+    <Transition name="fade" mode="out-in">
+      <div class="card__info" v-show="open">
+        <div class="card-inputs">
+          <input
+            v-model.number="bjuNeed.prots"
+            class="card-input"
+            type="text"
+            inputmode="decimal"
+            name="inputNeedProt"
+            :placeholder="'Белки: ' + props.prots"
+            @input="changeInputProt"
+            @focus="$event.target.select()"
+          />
+          <input
+            v-model.number="bjuNeed.fats"
+            class="card-input"
+            type="text"
+            inputmode="decimal"
+            name="inputNeedProt"
+            :placeholder="'Жиры: ' + props.fats"
+            @input="changeInputFat"
+            @focus="$event.target.select()"
+          />
+          <input
+            v-model.number="bjuNeed.carbs"
+            class="card-input"
+            type="text"
+            inputmode="decimal"
+            name="inputNeedCarbs"
+            :placeholder="'Углеводы: ' + props.carbs"
+            @input="changeInputCarb"
+            @focus="$event.target.select()"
+          />
+        </div>
+        <div class="bju">
+          <p>Б: {{ prots }}</p>
+          <p>Ж: {{ fats }}</p>
+          <p>У: {{ carbs }}</p>
+          <p class="">Кф: {{ rate }}</p>
+        </div>
+        <div class="card-weights">
+          <input
+            @focus.passive="$event.target.select()"
+            v-model="bjuNeed.weight"
+            type="text"
+            inputmode="decimal"
+            name="inpuraw"
+            class="card-input"
+          />
+          <p class="">готовое: {{ Math.round(bjuNeed.weight * rate) }}</p>
+          <p class="">сырое: {{ Math.round(bjuNeed.weight / rate) }}</p>
+          <!-- <p class="">нужно: {{ needWeight }}</p> -->
+        </div>
       </div>
-      <div class="bju">
-        <p>Б: {{ prots }}</p>
-        <p>Ж: {{ fats }}</p>
-        <p>У: {{ carbs }}</p>
-        <p class="">Кф: {{ rate }}</p>
-      </div>
-
-      <div class="card-weights">
-        <input
-          @focus.passive="$event.target.select()"
-          v-model="bjuNeed.weight"
-          type="text"
-          inputmode="numeric"
-          name="inpuraw"
-          class="card-input"
-        />
-
-        <p class="">готовое: {{ Math.round(bjuNeed.weight * rate) }}</p>
-        <p class="">сырое: {{ Math.round(bjuNeed.weight / rate) }}</p>
-        <!-- <p class="">нужно: {{ needWeight }}</p> -->
-      </div>
-    </div>
+    </Transition>
   </div>
 </template>
 
@@ -241,6 +243,7 @@ const changeInputFat = () => {
   padding: 0.5rem 0.5rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  max-height: 120px;
 }
 
 .card-input {
@@ -253,5 +256,22 @@ const changeInputFat = () => {
   outline: none;
   padding: 0 0.2rem;
   margin-bottom: 0.5rem;
+}
+.card-input:focus-visible {
+  border-color: var(--color-accent);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s ease;
+  max-height: 120px;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  padding: 0;
+  /* transform: translateY(-30px); */
+  max-height: 0px;
 }
 </style>

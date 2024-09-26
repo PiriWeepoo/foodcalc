@@ -79,7 +79,7 @@ const test = () => {
               type="text"
               inputmode="decimal"
               placeholder="ккал"
-              class="box-border border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
+              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[#4a7766] focus:outline-none focus:ring-0"
             />
           </div>
           <div class="flex flex-col">
@@ -90,7 +90,7 @@ const test = () => {
               type="text"
               inputmode="decimal"
               placeholder="г."
-              class="box-border border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
+              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[#4a7766] focus:outline-none focus:ring-0"
             />
           </div>
           <div class="flex flex-col">
@@ -101,7 +101,7 @@ const test = () => {
               type="text"
               inputmode="decimal"
               placeholder="г."
-              class="box-border border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
+              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[#4a7766] focus:outline-none focus:ring-0"
             />
           </div>
         </div>

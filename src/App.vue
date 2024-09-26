@@ -177,7 +177,7 @@ provide('cartActions', {
         /> -->
 
         <CardList :items="items" />
-        <Accordion />
+        <Accordion :items="items" />
       </div>
     </div>
     <button
