@@ -147,9 +147,7 @@ const toggleCardInfo = inject('toggleCardInfo')
       <h2 class="header__title">{{ title }}</h2>
       <div class="header__info">
         <Transition name="fade" mode="out-in">
-          <p class="header__bju" v-show="!props.isOpen">
-            Б: {{ prots }} Ж: {{ fats }} У: {{ carbs }}
-          </p>
+          <p class="header__bju" v-show="false">Б: {{ prots }} Ж: {{ fats }} У: {{ carbs }}</p>
         </Transition>
         <p class="header__cal color-text-accent">{{ calories }}</p>
       </div>
@@ -247,7 +245,6 @@ const toggleCardInfo = inject('toggleCardInfo')
   border-top-right-radius: 1rem;
   /* box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.2); */
   align-items: center;
-  border-bottom: 1px solid currentColor;
 }
 
 .header__title {
@@ -269,6 +266,7 @@ const toggleCardInfo = inject('toggleCardInfo')
 }
 
 .card__info {
+  border-top: 1px solid currentColor;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
   gap: 0.75rem;
