@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 const props = defineProps({
   id: Number,
   title: String,
@@ -13,13 +13,19 @@ const props = defineProps({
 
 const open = ref(false)
 
-const emit = defineEmits(['toggleAnswer']) // defining events to emit
-const handleClick = (id) => emit('toggleAnswer', id) // emitting toggleAnswer event with id attribute.
+const emit = defineEmits(['toggleAnswer'])
+const handleClick = (id) => emit('toggleAnswer', id)
+
+const toggleCardInfo = inject('toggleCardInfo')
+
+const onClickHeader = () => {
+  toggleCardInfo(props.id)
+}
 </script>
 
 <template>
   <div class="item">
-    <div class="header cursor-pointer" @click="() => handleClick(props.id)">
+    <div class="header cursor-pointer" @click="() => toggleCardInfo(props.id)">
       <div class="question">{{ title }},{{ id }},{{ isOpen }}</div>
     </div>
     <div class="answer" :class="['answer', { open: props.isOpen }]">

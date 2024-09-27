@@ -77,6 +77,26 @@ const addToFavorite = async (item) => {
   }
 }
 
+const toggleCardInfo = async (id) => {
+  try {
+    // faqs.value = faqs.value.map((faq) =>
+    //   faq.isOpen && faq.id !== id ? { ...faq, isOpen: false } : faq
+    // )
+    // faqs.value = faqs.value.map((faq) => (faq.id === id ? { ...faq, isOpen: !faq.isOpen } : faq))
+
+    items.value = items.value.map((item) =>
+      item.isOpen && item.id !== id ? { ...item, isOpen: false } : item
+    )
+    items.value = items.value.map((item) =>
+      item.id === id ? { ...item, isOpen: !item.isOpen } : item
+    )
+
+    // console.log(data)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // const calculateWeight = async (item) => {
 //   try {
 //     if (!item.isFavorite) {
@@ -113,7 +133,7 @@ const fetchItems = async () => {
     items.value = data.map((obj) => ({
       ...obj,
       isFavorite: false,
-      isAdded: false
+      isOpen: false
     }))
   } catch (err) {
     console.log(err)
@@ -131,6 +151,9 @@ provide('cartActions', {
   closeDrawer,
   openDrawer
 })
+
+provide('toggleCardInfo', toggleCardInfo)
+
 // provide('calculateWeight', calculateWeight)
 </script>
 
@@ -157,8 +180,9 @@ provide('cartActions', {
           <div class="relative">
             <img class="absolute left-4 top-3" src="/search.svg" alt="" />
             <input
+              @focus.passive="$event.target.select()"
               @input="onChangeSearchInput"
-              class="rounded-md border border-current py-2 pl-10 pr-4 opacity-50 outline-none focus:opacity-100"
+              class="rounded-md border border-current py-2 pl-10 pr-4 text-[var(--color-accent)] opacity-50 outline-none focus:opacity-100"
               placeholder="Поиск..."
               type="text"
             />
@@ -177,7 +201,7 @@ provide('cartActions', {
         /> -->
 
         <CardList :items="items" />
-        <Accordion :items="items" />
+        <!-- <Accordion :items="items" /> -->
       </div>
     </div>
     <button

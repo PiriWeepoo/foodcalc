@@ -66,20 +66,20 @@ const test = () => {
             name="title"
             type="text"
             placeholder="Введите название"
-            class="w-full border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-inset"
+            class="w-full rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-inset"
           />
         </div>
 
         <div class="grid grid-cols-3 gap-4">
           <div class="flex flex-col">
-            <label for="calories" class="text-sm font-semibold">Калории (в 100г.)</label>
+            <label for="calories" class="text-sm font-semibold">Калории</label>
             <input
               v-model.number="foods.calories"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="decimal"
-              placeholder="ккал"
-              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[#4a7766] focus:outline-none focus:ring-0"
+              placeholder="в 100г."
+              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
             />
           </div>
           <div class="flex flex-col">
@@ -90,7 +90,7 @@ const test = () => {
               type="text"
               inputmode="decimal"
               placeholder="г."
-              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[#4a7766] focus:outline-none focus:ring-0"
+              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
             />
           </div>
           <div class="flex flex-col">
@@ -101,7 +101,7 @@ const test = () => {
               type="text"
               inputmode="decimal"
               placeholder="г."
-              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[#4a7766] focus:outline-none focus:ring-0"
+              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
             />
           </div>
         </div>
@@ -115,7 +115,7 @@ const test = () => {
               type="text"
               inputmode="decimal"
               placeholder="в 100г."
-              class="w-full border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
+              class="w-full rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
             />
           </div>
           <div class="flex w-full flex-col items-start">
@@ -126,7 +126,7 @@ const test = () => {
               type="text"
               inputmode="decimal"
               placeholder="в 100г."
-              class="w-full border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
+              class="w-full rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
             />
           </div>
           <div class="flex w-full flex-col items-start">
@@ -137,7 +137,7 @@ const test = () => {
               type="text"
               inputmode="decimal"
               placeholder="в 100г."
-              class="form-input w-full border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:outline-none focus:ring-0"
+              class="form-input w-full rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
             />
           </div>
         </div>

@@ -24,6 +24,7 @@ defineProps({
       :fats="item.fats"
       :carbs="item.carbs"
       :rate="item.rate"
+      :is-open="item.isOpen"
     />
   </div>
 </template>

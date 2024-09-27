@@ -6,18 +6,28 @@ const props = defineProps({
   items: Array
 })
 
-const newItems = props.items.map((item) => {
-  return { ...item, isOpen: false }
-})
+// const newItems = props.items.map((item) => {
+//   console.log(item)
+//   return { ...item, isOpen: true }
+// })
 
-const faqs = ref(newItems)
+// const faqs = ref(
+//   props.items.map((item) => {
+//     console.log(item)
+//     return { ...item, isOpen: false }
+//   })
+// )
 
-const toggleAnswer = (id) => {
-  faqs.value = faqs.value.map((faq) =>
-    faq.isOpen && faq.id !== id ? { ...faq, isOpen: false } : faq
-  )
-  faqs.value = faqs.value.map((faq) => (faq.id === id ? { ...faq, isOpen: !faq.isOpen } : faq))
-}
+// const faqs = ref(props.items)
+
+// console.log(newItems.values)
+
+// const toggleAnswer = (id) => {
+//   faqs.value = faqs.value.map((faq) =>
+//     faq.isOpen && faq.id !== id ? { ...faq, isOpen: false } : faq
+//   )
+//   faqs.value = faqs.value.map((faq) => (faq.id === id ? { ...faq, isOpen: !faq.isOpen } : faq))
+// }
 </script>
 
 <template>
@@ -25,7 +35,7 @@ const toggleAnswer = (id) => {
     <h1>Accordion</h1>
     <div class="items">
       <AccordionItem
-        v-for="item in faqs"
+        v-for="item in items"
         :key="item.id"
         :id="item.id"
         :title="item.title"
@@ -35,7 +45,6 @@ const toggleAnswer = (id) => {
         :carbs="item.carbs"
         :rate="item.rate"
         :isOpen="item.isOpen"
-        @toggle-answer="toggleAnswer"
       />
     </div>
   </div>
