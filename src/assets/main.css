@@ -31,6 +31,7 @@ body {
   /* background-color: rgb(165 180 252); */
   background-color: var(--color-bg-main);
   color: var(--color-text-accent);
+  overscroll-behavior: none;
 }
 
 input::-moz-placeholder,

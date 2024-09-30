@@ -206,7 +206,7 @@ const toggleCardInfo = inject('toggleCardInfo')
           <!-- <p class="">нужно: {{ needWeight }}</p> -->
         </div>
         <button
-          class="info__edit-button color-text-accent fixed bottom-2 right-2 rounded-full"
+          class="info__edit-button color-text-accent absolute bottom-2 right-2 rounded-full"
           @click=""
         >
           <svg
