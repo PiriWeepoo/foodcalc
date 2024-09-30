@@ -1,55 +1,71 @@
 <script setup>
 import axios from 'axios'
 import { reactive, ref } from 'vue'
-
 import { inject } from 'vue'
 
+const props = defineProps({
+  id: String,
+  title: { type: String, default: '' },
+  calories: { type: String, default: '' },
+  prots: { type: String, default: '' },
+  fats: { type: String, default: '' },
+  carbs: { type: String, default: '' },
+  rate: { type: String, default: '' },
+  typeForm: String
+})
+
 const { closeDrawer } = inject('cartActions')
+const { closePopup } = inject('popupActions')
 
 const foods = reactive({
-  title: '',
-  calories: '',
-  prots: '',
-  fats: '',
-  carbs: '',
-  raw: '',
-  ready: '',
+  title: props.title,
+  calories: props.calories,
+  prots: props.prots,
+  fats: props.fats,
+  carbs: props.carbs,
+  raw: '100',
+  ready: (props.rate * 100).toString(),
   ingredients: []
 })
 
-const isEmpty = (val) => val === null || !(Object.keys(val) || val).length
-
 const addFood = async () => {
   try {
-    if (
-      foods.title === '' ||
-      foods.calories === '' ||
-      foods.prots === '' ||
-      foods.fats === '' ||
-      foods.carbs === '' ||
-      foods.ready === '' ||
-      foods.raw === ''
-    ) {
-      alert('Не все поля заполнены.')
-    } else {
-      const { data } = await axios.post('https://4b0723948a636cf0.mokky.dev/items', {
-        title: foods.title,
-        calories: foods.calories,
-        prots: foods.prots,
-        fats: foods.fats,
-        carbs: foods.carbs,
-        rate: parseFloat((foods.ready / foods.raw).toFixed(2)),
-        ingredients: []
-      })
-      console.log(data.value)
-      closeDrawer()
-    }
+    const { data } = await axios.post('https://4b0723948a636cf0.mokky.dev/items', {
+      title: foods.title,
+      calories: foods.calories,
+      prots: foods.prots,
+      fats: foods.fats,
+      carbs: foods.carbs,
+      rate: parseFloat((foods.ready / foods.raw).toFixed(2)),
+      ingredients: []
+    })
+    console.log(data.value)
+    closeDrawer()
   } catch (error) {
     console.log(error)
   }
 }
-const test = () => {
-  console.log(foods.calories)
+
+const updateFood = async () => {
+  try {
+    const { data } = await axios.patch('https://4b0723948a636cf0.mokky.dev/items/' + props.id, {
+      title: foods.title,
+      calories: foods.calories,
+      prots: foods.prots,
+      fats: foods.fats,
+      carbs: foods.carbs,
+      rate: parseFloat((foods.ready / foods.raw).toFixed(2)),
+      ingredients: []
+    })
+    console.log(data.value)
+    closePopup()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const submitForm = () => {
+  props.typeForm === 'update' ? updateFood() : addFood()
 }
 </script>
 
@@ -58,7 +74,7 @@ const test = () => {
     class="form r gap-3transition-all relative z-10 flex w-full shrink-0 cursor-pointer snap-start flex-col items-center justify-center duration-300"
   >
     <div class="w-full">
-      <form @submit.prevent="addFood" class="flex flex-col gap-3">
+      <form @submit.prevent="submitForm" class="flex flex-col gap-3">
         <div class="flex flex-col items-start">
           <label for="title" class="text-sm font-semibold">Название</label>
           <input
@@ -147,7 +163,7 @@ const test = () => {
             type="submit"
             class="hover:transiton color-bg-accent mt-6 w-full rounded-xl py-3 text-sm font-semibold text-[var(--color-light)] shadow-lg shadow-stone-900/40 transition-all hover:scale-105 focus:scale-100 focus:outline-none"
           >
-            Добавить
+            {{ typeForm === 'update' ? 'Сохранить' : 'Добавить' }}
           </button>
         </div>
       </form>

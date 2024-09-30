@@ -1,5 +1,7 @@
 <script setup>
-import { reactive, toRef, inject } from 'vue'
+import { reactive, ref, inject, provide } from 'vue'
+import Popup from './Popup.vue'
+
 const props = defineProps({
   id: Number,
   title: String,
@@ -30,10 +32,15 @@ const bjuNeed = reactive({
   weight: null
 })
 
-const PROT = toRef(bjuNeed, 'prots')
-const CARB = toRef(bjuNeed, 'carbs')
-const FAT = toRef(bjuNeed, 'fats')
-const WEIGHT = toRef(bjuNeed, 'weight')
+const popupOpen = ref(false)
+
+const closePopup = () => {
+  popupOpen.value = false
+}
+
+const openPopup = () => {
+  popupOpen.value = true
+}
 
 // watch(PROT, (val) => {
 //   const koef = parseFloat((val / props.prots).toFixed(2))
@@ -136,12 +143,18 @@ const changeInputFat = () => {
 
 //===============================//
 
+provide('popupActions', {
+  closePopup,
+  openPopup
+})
+
 const toggleCardInfo = inject('toggleCardInfo')
 </script>
 
 <!-- p-4 cursor-default flex items-center justify-between w-full w-full rounded-lg bg-indigo-300 px-3 hover:-translate-y-1-->
 <!-- grid grid-cols-[50px_50px_50px] -->
 <template>
+  <Popup v-if="popupOpen" :closePopup="closePopup" :item="props" />
   <div class="card color-accent relative">
     <div class="card__header" @click="() => toggleCardInfo(props.id)">
       <h2 class="header__title">{{ title }}</h2>
@@ -207,7 +220,7 @@ const toggleCardInfo = inject('toggleCardInfo')
         </div>
         <button
           class="info__edit-button color-text-accent absolute bottom-2 right-2 rounded-full"
-          @click=""
+          @click="openPopup"
         >
           <svg
             viewBox="0 0 24 24"

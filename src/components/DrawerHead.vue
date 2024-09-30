@@ -1,7 +1,16 @@
 <script setup>
 import { inject } from 'vue'
 
+const props = defineProps({
+  title: {
+    type: String,
+    default: 'Добавление еды!!!!'
+  },
+  type: String
+})
+
 const { closeDrawer } = inject('cartActions')
+const { closePopup } = inject('popupActions')
 </script>
 
 <template>
@@ -31,6 +40,6 @@ const { closeDrawer } = inject('cartActions')
       />
     </svg>
 
-    <h2 class="text-2xl font-bold">Добавление еды</h2>
+    <h2 class="text-2xl font-bold">{{ title }}</h2>
   </div>
 </template>
