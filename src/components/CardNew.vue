@@ -5,24 +5,13 @@ import Popup from './Popup.vue'
 const props = defineProps({
   id: Number,
   title: String,
-  calories: Number,
-  prots: Number,
-  fats: Number,
-  carbs: Number,
-  rate: Number,
+  calories: String,
+  prots: String,
+  fats: String,
+  carbs: String,
+  rate: String,
   isOpen: Boolean
 })
-
-// const weight = ref('100')
-
-// const needProt = ref(props.prots)
-
-// const needWeight = ref(0)
-
-// const needWeight = computed(() => {
-//   console.log(needProt.value)
-//   return Math.round((needProt.value / props.carbs) * 100)
-// })
 
 //===============================//
 const bjuNeed = reactive({
@@ -42,56 +31,6 @@ const openPopup = () => {
   popupOpen.value = true
 }
 
-// watch(PROT, (val) => {
-//   const koef = parseFloat((val / props.prots).toFixed(2))
-
-//   bjuNeed.fats = parseFloat((props.fats * koef).toFixed(2))
-//   bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
-//   bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
-
-//   console.clear()
-//   console.log('koef=', koef)
-
-//   console.log('P=', val)
-//   console.log('F=', bjuNeed.fats)
-//   console.log('C=', bjuNeed.carbs)
-//   console.log('W=', bjuNeed.weight)
-// })
-
-// watch(CARB, (val) => {
-//   const koef = parseFloat((val / props.carbs).toFixed(2))
-
-//   bjuNeed.prots = parseFloat((props.prots * koef).toFixed(2))
-//   bjuNeed.fats = parseFloat((props.fats * koef).toFixed(2))
-//   bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
-
-//   console.clear()
-//   console.log('koef=', koef)
-
-//   console.log('P=', bjuNeed.prots)
-//   console.log('F=', bjuNeed.fats)
-//   console.log('C=', val)
-//   console.log('W=', bjuNeed.weight)
-// })
-
-// watch(FAT, (val) => {
-//   const koef = parseFloat((val / props.fats).toFixed(2))
-
-//   bjuNeed.prots = parseFloat((props.prots * koef).toFixed(2))
-//   bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
-//   bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
-
-//   console.clear()
-//   console.log('koef=', koef)
-
-//   console.log('P=', bjuNeed.prots)
-//   console.log('F=', val)
-//   console.log('C=', bjuNeed.carbs)
-//   console.log('W=', bjuNeed.weight)
-// })
-
-//===============================//
-
 const changeInputProt = () => {
   const koef = bjuNeed.prots / props.prots //parseFloat((val / props.fats).toFixed(2))
 
@@ -99,14 +38,14 @@ const changeInputProt = () => {
   bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
   bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
 
-  console.clear()
-  console.log('val=', bjuNeed.prots)
-  console.log('koef=', koef)
+  // console.clear()
+  // console.log('val=', bjuNeed.prots)
+  // console.log('koef=', koef)
 
-  console.log('P=', bjuNeed.prots)
-  console.log('F=', bjuNeed.fats)
-  console.log('C=', bjuNeed.carbs)
-  console.log('W=', bjuNeed.weight)
+  // console.log('P=', bjuNeed.prots)
+  // console.log('F=', bjuNeed.fats)
+  // console.log('C=', bjuNeed.carbs)
+  // console.log('W=', bjuNeed.weight)
 }
 
 const changeInputCarb = () => {
@@ -116,13 +55,13 @@ const changeInputCarb = () => {
   bjuNeed.prots = parseFloat((props.prots * koef).toFixed(2))
   bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
 
-  console.clear()
-  console.log('koef=', koef)
+  // console.clear()
+  // console.log('koef=', koef)
 
-  console.log('P=', bjuNeed.prots)
-  console.log('F=', bjuNeed.fats)
-  console.log('C=', bjuNeed.carbs)
-  console.log('W=', bjuNeed.weight)
+  // console.log('P=', bjuNeed.prots)
+  // console.log('F=', bjuNeed.fats)
+  // console.log('C=', bjuNeed.carbs)
+  // console.log('W=', bjuNeed.weight)
 }
 
 const changeInputFat = () => {
@@ -132,13 +71,13 @@ const changeInputFat = () => {
   bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
   bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
 
-  console.clear()
-  console.log('koef=', koef)
+  // console.clear()
+  // console.log('koef=', koef)
 
-  console.log('P=', bjuNeed.prots)
-  console.log('F=', bjuNeed.fats)
-  console.log('C=', bjuNeed.carbs)
-  console.log('W=', bjuNeed.weight)
+  // console.log('P=', bjuNeed.prots)
+  // console.log('F=', bjuNeed.fats)
+  // console.log('C=', bjuNeed.carbs)
+  // console.log('W=', bjuNeed.weight)
 }
 
 //===============================//

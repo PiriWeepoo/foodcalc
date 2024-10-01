@@ -4,7 +4,7 @@ import { reactive, ref } from 'vue'
 import { inject } from 'vue'
 
 const props = defineProps({
-  id: String,
+  id: Number,
   title: { type: String, default: '' },
   calories: { type: String, default: '' },
   prots: { type: String, default: '' },
@@ -15,7 +15,7 @@ const props = defineProps({
 })
 
 const { closeDrawer } = inject('cartActions')
-const { closePopup } = inject('popupActions')
+// const { closePopup } = inject('popupActions')
 
 const foods = reactive({
   title: props.title,
@@ -58,7 +58,6 @@ const updateFood = async () => {
       ingredients: []
     })
     console.log(data.value)
-    closePopup()
   } catch (error) {
     console.log(error)
   }

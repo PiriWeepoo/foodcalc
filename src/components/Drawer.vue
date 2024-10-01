@@ -1,18 +1,11 @@
 <script setup>
-import axios from 'axios'
 import DrawerHead from './DrawerHead.vue'
 import Form from './Form.vue'
-
-const props = defineProps({
-  drawerTitle: String
-})
-
-console.log(props.drawerTitle)
 </script>
 
 <template>
   <div class="color-accent fixed right-0 top-0 z-50 flex h-full w-full flex-col p-8">
-    <DrawerHead :title="drawerTitle" />
+    <DrawerHead />
 
     <Form />
     <!-- <CartItemList /> -->

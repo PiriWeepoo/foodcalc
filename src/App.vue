@@ -9,10 +9,6 @@ import Accordion from './components/Accordion.vue'
 import CardNew from './components/CardNew.vue'
 
 const items = ref([])
-const drawerInfo = {
-  title: '',
-  type: ''
-}
 
 const drawerOpen = ref(false)
 
@@ -22,8 +18,6 @@ const closeDrawer = () => {
 }
 
 const openDrawer = () => {
-  drawerInfo.title = 'Добавление еды!'
-  console.log(drawerInfo.title)
   drawerOpen.value = true
 }
 
@@ -165,7 +159,7 @@ provide('toggleCardInfo', toggleCardInfo)
 
 <template>
   <div class="wrapper fixed relative">
-    <Drawer v-if="drawerOpen" :drawerTitle="drawerInfo.title" />
+    <Drawer v-if="drawerOpen" />
     <div class="m-1 m-auto">
       <!-- <Header /> -->
       <div class="flex items-center justify-between p-2 drop-shadow-md">

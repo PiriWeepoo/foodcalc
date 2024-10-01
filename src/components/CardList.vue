@@ -19,11 +19,11 @@ defineProps({
       :key="item.id"
       :id="item.id"
       :title="item.title"
-      :calories="item.calories"
-      :prots="item.prots"
-      :fats="item.fats"
-      :carbs="item.carbs"
-      :rate="item.rate"
+      :calories="item.calories.toString()"
+      :prots="item.prots.toString()"
+      :fats="item.fats.toString()"
+      :carbs="item.carbs.toString()"
+      :rate="item.rate.toString()"
       :is-open="item.isOpen"
     />
   </div>
