@@ -1,11 +1,27 @@
 <script setup>
-import DrawerHead from './DrawerHead.vue'
+import axios from 'axios'
 import Form from './Form.vue'
 
 const props = defineProps({
   item: Object,
   closePopup: Function
 })
+
+console.log(props.item)
+
+const deleteItem = async () => {
+  try {
+    const { data } = await axios.patch(
+      'https://4b0723948a636cf0.mokky.dev/items/' + props.item.id,
+      {
+        isDeleted: true
+      }
+    )
+    props.closePopup()
+  } catch (error) {
+    console.log(error)
+  }
+}
 </script>
 
 <template>
@@ -36,9 +52,9 @@ const props = defineProps({
         />
       </svg>
 
-      <h2 class="text-2xl font-bold">Редактирование</h2>
+      <h2 class="text-2xl font-bold">Редактирование {{ item.isDeleted }}</h2>
       <svg
-        @click=""
+        @click="deleteItem"
         class="cursor-pointer opacity-100 transition hover:-translate-y-1 hover:opacity-100"
         width="1.4rem"
         viewBox="0 0 512 512"

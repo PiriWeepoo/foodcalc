@@ -126,7 +126,7 @@ const fetchItems = async () => {
       params.title = `*${filters.searchQuery}*`
     }
 
-    const { data } = await axios.get('https://4b0723948a636cf0.mokky.dev/items', {
+    const { data } = await axios.get('https://4b0723948a636cf0.mokky.dev/items?isDeleted=false', {
       params
     })
 

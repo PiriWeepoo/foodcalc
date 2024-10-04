@@ -10,7 +10,10 @@ const props = defineProps({
   fats: String,
   carbs: String,
   rate: String,
-  isOpen: Boolean
+  raw: String,
+  ready: String,
+  isOpen: Boolean,
+  isDeleted: Boolean
 })
 
 //===============================//
