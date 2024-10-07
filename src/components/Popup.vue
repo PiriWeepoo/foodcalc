@@ -7,7 +7,7 @@ const props = defineProps({
   closePopup: Function
 })
 
-console.log(props.item)
+console.log(props.item.raw)
 
 const deleteItem = async () => {
   try {
@@ -75,6 +75,8 @@ const deleteItem = async () => {
         :fats="item.fats"
         :carbs="item.carbs"
         :rate="item.rate"
+        :raw="item.raw"
+        :ready="item.ready"
         typeForm="update"
       />
       <!-- <p>{{ item }}</p> -->

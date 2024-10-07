@@ -24,8 +24,8 @@ defineProps({
       :fats="item.fats.toString()"
       :carbs="item.carbs.toString()"
       :rate="item.rate.toString()"
-      :raw="item.rate.toString()"
-      :ready="item.rate.toString()"
+      :raw="item.raw.toString()"
+      :ready="item.ready.toString()"
       :is-open="item.isOpen"
       :is-deleted="item.isDeleted"
     />

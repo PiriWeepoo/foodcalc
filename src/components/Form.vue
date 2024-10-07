@@ -11,6 +11,10 @@ const props = defineProps({
   fats: { type: String, default: '' },
   carbs: { type: String, default: '' },
   rate: { type: String, default: '' },
+
+  ready: { type: String, default: '' },
+
+  raw: { type: String, default: '' },
   typeForm: String
 })
 
@@ -23,8 +27,8 @@ const foods = reactive({
   prots: props.prots,
   fats: props.fats,
   carbs: props.carbs,
-  raw: '100',
-  ready: (props.rate * 100).toString(),
+  raw: props.raw,
+  ready: props.ready,
   ingredients: []
 })
 
@@ -37,6 +41,8 @@ const addFood = async () => {
       fats: foods.fats,
       carbs: foods.carbs,
       rate: parseFloat((foods.ready / foods.raw).toFixed(2)),
+      raw: foods.raw,
+      ready: foods.ready,
       ingredients: []
     })
     console.log(data.value)
@@ -55,6 +61,8 @@ const updateFood = async () => {
       fats: foods.fats,
       carbs: foods.carbs,
       rate: parseFloat((foods.ready / foods.raw).toFixed(2)),
+      raw: foods.raw,
+      ready: foods.ready,
       ingredients: []
     })
     console.log(data.value)
