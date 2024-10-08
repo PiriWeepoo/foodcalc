@@ -22,7 +22,7 @@ const openDrawer = () => {
 }
 
 const filters = reactive({
-  sortBy: 'id',
+  sortBy: 'title',
   searchQuery: ''
 })
 
@@ -96,25 +96,6 @@ const toggleCardInfo = async (id) => {
     console.log(err)
   }
 }
-
-// const calculateWeight = async (item) => {
-//   try {
-//     if (!item.isFavorite) {
-//       const obj = {
-//         parentId: item.id
-//       }
-//       //const { data } = await axios.post('https://4b0723948a636cf0.mokky.dev/favorites', obj)
-
-//       console.log(item.id)
-//     } else {
-//       //  await axios.delete('https://4b0723948a636cf0.mokky.dev/favorites/', obj)
-//     }
-
-//     // console.log(data)
-//   } catch (err) {
-//     console.log(err)
-//   }
-// }
 
 const fetchItems = async () => {
   try {
