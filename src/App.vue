@@ -143,7 +143,7 @@ provide('toggleCardInfo', toggleCardInfo)
     <Drawer v-if="drawerOpen" />
     <div class="m-1 m-auto">
       <!-- <Header /> -->
-      <div class="flex items-center justify-between gap-2 p-2 drop-shadow-md">
+      <div class="flex items-center justify-between gap-2 p-2">
         <button
           class="transition duration-500 ease-in-out active:rotate-[360deg]"
           @click="fetchItems"
@@ -185,22 +185,11 @@ provide('toggleCardInfo', toggleCardInfo)
         </div>
       </div>
       <div class="bg-primary relative p-2">
-        <!-- <CardNew
-          title="РОЖКИ"
-          :calories="350"
-          :prots="13"
-          :fats="1.5"
-          :carbs="72"
-          :rate="2.1"
-          style="margin-bottom: 1rem"
-        /> -->
-
         <CardList :items="items" />
-        <!-- <Accordion :items="items" /> -->
       </div>
     </div>
     <button
-      class="color-text-accent fixed bottom-2 right-2 opacity-60 drop-shadow-lg"
+      class="color-text-accent fixed bottom-3 right-3 opacity-60 drop-shadow-lg"
       @click="openDrawer"
     >
       <svg
