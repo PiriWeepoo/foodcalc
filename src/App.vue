@@ -7,6 +7,7 @@ import CardList from './components/CardList.vue'
 import Drawer from './components/Drawer.vue'
 import Accordion from './components/Accordion.vue'
 import CardNew from './components/CardNew.vue'
+import MenuBar from './components/MenuBar.vue'
 
 const items = ref([])
 
@@ -144,10 +145,7 @@ provide('toggleCardInfo', toggleCardInfo)
     <div class="m-1 m-auto">
       <!-- <Header /> -->
       <div class="flex items-center justify-between gap-2 p-2">
-        <button
-          class="transition duration-500 ease-in-out active:rotate-[360deg]"
-          @click="fetchItems"
-        >
+        <button class="transition ease-in-out active:rotate-[360deg]" @click="fetchItems">
           <svg
             height="24"
             viewBox="0 0 513 513"
@@ -165,7 +163,7 @@ provide('toggleCardInfo', toggleCardInfo)
         </button>
         <select
           @change="onChangeSelect"
-          class="rounded-md border px-3 py-1 text-[var(--color-accent)] outline-none"
+          class="rounded-md border px-3 py-1 text-[var(--color-accent)] opacity-50 outline-none"
           name=""
           id=""
         >
@@ -178,7 +176,7 @@ provide('toggleCardInfo', toggleCardInfo)
           <input
             @focus.passive="$event.target.select()"
             @input="onChangeSearchInput"
-            class="box-border w-full rounded-md border border-current py-1 pl-10 pr-2 text-[var(--color-accent)] opacity-50 outline-none transition-all"
+            class="box-border w-full rounded-md border border-current py-1 pl-10 pr-2 text-[var(--color-accent)] opacity-50 outline-none transition-all focus:opacity-100"
             placeholder="Поиск..."
             type="text"
           />
@@ -186,10 +184,11 @@ provide('toggleCardInfo', toggleCardInfo)
       </div>
       <div class="bg-primary relative p-2">
         <CardList :items="items" />
+        <!-- <MenuBar /> -->
       </div>
     </div>
     <button
-      class="color-text-accent fixed bottom-3 right-3 opacity-60 drop-shadow-lg"
+      class="color-text-accent fixed bottom-3 right-3 rounded-full bg-[var(--color-light)] p-0.5 opacity-60 drop-shadow-lg"
       @click="openDrawer"
     >
       <svg

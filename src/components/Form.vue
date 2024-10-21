@@ -40,7 +40,7 @@ const addFood = async () => {
       prots: foods.prots,
       fats: foods.fats,
       carbs: foods.carbs,
-      rate: parseFloat((foods.ready / foods.raw).toFixed(2)),
+      rate: parseFloat((foods.ready / foods.raw).toFixed(2)).toString(),
       raw: foods.raw,
       ready: foods.ready,
       isDeleted: false,
