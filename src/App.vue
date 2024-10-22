@@ -23,7 +23,7 @@ const openDrawer = () => {
 }
 
 const filters = reactive({
-  sortBy: 'title',
+  sortBy: '-id',
   searchQuery: ''
 })
 
