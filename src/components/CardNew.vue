@@ -109,6 +109,12 @@ const toggleCardInfo = inject('toggleCardInfo')
     </div>
     <Transition name="slide-info" mode="out-in">
       <div class="card__info" v-show="props.isOpen">
+        <div class="bju">
+          <p>Б: {{ !bjuNeed.weight ? prots : Math.round(bjuNeed.weight * prots * 0.01) }}</p>
+          <p>Ж: {{ !bjuNeed.weight ? fats : Math.round(bjuNeed.weight * fats * 0.01) }}</p>
+          <p>У: {{ !bjuNeed.weight ? carbs : Math.round(bjuNeed.weight * carbs * 0.01) }}</p>
+          <p class="">Кф: {{ rate }}</p>
+        </div>
         <div class="card-inputs">
           <input
             v-model.number="bjuNeed.prots"
@@ -141,12 +147,7 @@ const toggleCardInfo = inject('toggleCardInfo')
             @focus="$event.target.select()"
           />
         </div>
-        <div class="bju">
-          <p>Б: {{ prots }}</p>
-          <p>Ж: {{ fats }}</p>
-          <p>У: {{ carbs }}</p>
-          <p class="">Кф: {{ rate }}</p>
-        </div>
+
         <div class="card-weights">
           <input
             @focus.passive="$event.target.select()"
@@ -223,7 +224,7 @@ const toggleCardInfo = inject('toggleCardInfo')
 .card__info {
   border-top: 1px solid currentColor;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
+  grid-template-columns: 70px minmax(0, 1fr) minmax(0, 1fr);
   gap: 0.75rem;
   padding: 0.5rem 0.5rem;
   border-bottom-left-radius: 1rem;
