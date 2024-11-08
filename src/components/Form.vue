@@ -44,6 +44,7 @@ const addFood = async () => {
       raw: foods.raw,
       ready: foods.ready,
       isDeleted: false,
+      dateUpdate: Date.now(),
       ingredients: []
     })
     console.log(data.value)
@@ -64,6 +65,7 @@ const updateFood = async () => {
       rate: parseFloat((foods.ready / foods.raw).toFixed(2)),
       raw: foods.raw,
       ready: foods.ready,
+      dateUpdate: Date.now(),
       ingredients: []
     })
     // console.log(data.value)

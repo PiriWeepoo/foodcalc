@@ -23,7 +23,7 @@ const openDrawer = () => {
 }
 
 const filters = reactive({
-  sortBy: '-id',
+  sortBy: '-dateUpdate',
   searchQuery: ''
 })
 

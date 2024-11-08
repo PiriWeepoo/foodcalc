@@ -13,6 +13,7 @@ const props = defineProps({
   raw: String,
   ready: String,
   isOpen: Boolean,
+  dateUpdate: Number,
   isDeleted: Boolean
 })
 
@@ -85,6 +86,20 @@ const changeInputFat = () => {
 
 //===============================//
 
+const formatDate = (timestamp) => {
+  let formattedDate = ''
+  if (isNaN(timestamp)) {
+    console.log('NaN')
+  } else {
+    // const timestamp = props.dateUpdate // example timestamp
+    const date = new Date(timestamp)
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }
+    formattedDate = new Intl.DateTimeFormat('ru-RU', options).format(date)
+  }
+
+  return formattedDate // prints "March 24, 2021"
+}
+
 provide('popupActions', {
   closePopup,
   openPopup
@@ -104,7 +119,7 @@ const toggleCardInfo = inject('toggleCardInfo')
         <Transition name="fade" mode="out-in">
           <p class="header__bju" v-show="false">Б: {{ prots }} Ж: {{ fats }} У: {{ carbs }}</p>
         </Transition>
-        <p class="header__cal color-text-accent">{{ calories }}</p>
+        <p class="header__cal color-text-accent">{{ formatDate(dateUpdate) }}</p>
       </div>
     </div>
     <Transition name="slide-info" mode="out-in">
@@ -215,10 +230,12 @@ const toggleCardInfo = inject('toggleCardInfo')
 }
 
 .header__cal {
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 0.5rem;
+  font-weight: 700;
   width: 3rem;
+  margin-right: 1rem;
   text-align: right;
+  opacity: 0.7;
 }
 
 .card__info {

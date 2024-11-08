@@ -26,6 +26,7 @@ defineProps({
       :rate="item.rate.toString()"
       :raw="item.raw.toString()"
       :ready="item.ready.toString()"
+      :date-update="item.dateUpdate"
       :is-open="item.isOpen"
       :is-deleted="item.isDeleted"
     />
