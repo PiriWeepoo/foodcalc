@@ -203,7 +203,7 @@ const toggleCardInfo = inject('toggleCardInfo')
   border-radius: 1em;
   /* display: grid; */
   /* outline-offset: -4px; */
-  filter: drop-shadow(0px 5px 5px rgba(20, 20, 20, 0.4));
+  filter: drop-shadow(0px 1px 2px rgba(20, 20, 20, 0.2));
 }
 
 .card__header {
