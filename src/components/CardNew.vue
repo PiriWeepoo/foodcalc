@@ -86,10 +86,12 @@ const changeInputFat = () => {
 
 //===============================//
 
+console.log(props.dateUpdate)
+
 const formatDate = (timestamp) => {
   let formattedDate = ''
   if (isNaN(timestamp)) {
-    console.log('NaN')
+    console.log('')
   } else {
     // const timestamp = props.dateUpdate // example timestamp
     const date = new Date(timestamp)

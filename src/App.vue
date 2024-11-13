@@ -23,7 +23,7 @@ const openDrawer = () => {
 }
 
 const filters = reactive({
-  sortBy: 'dateUpdate',
+  sortBy: '-dateUpdate',
   searchQuery: ''
 })
 
@@ -169,7 +169,9 @@ provide('toggleCardInfo', toggleCardInfo)
         >
           <option value="title">По названию</option>
           <option value="-id">Сначала новые</option>
-          <option value="-dateUpdate">Сначала старые</option>
+          <option value="id">Сначала старые</option>
+          <option value="dateUpdate">По обновлению старые</option>
+          <option value="-dateUpdate">По обновлению новые</option>
         </select>
         <div class="relative">
           <img class="absolute left-4 top-2" src="/search.svg" alt="" />
@@ -184,7 +186,7 @@ provide('toggleCardInfo', toggleCardInfo)
       </div>
       <div class="bg-primary relative p-2">
         <CardList :items="items" />
-        <!-- <MenuBar /> -->
+        <MenuBar />
       </div>
     </div>
     <button
