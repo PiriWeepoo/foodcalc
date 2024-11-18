@@ -86,8 +86,6 @@ const changeInputFat = () => {
 
 //===============================//
 
-console.log(props.dateUpdate)
-
 const formatDate = (timestamp) => {
   let formattedDate = ''
   if (isNaN(timestamp)) {
@@ -107,6 +105,11 @@ provide('popupActions', {
   openPopup
 })
 
+const isCarb = ref(parseFloat(props.carbs) > parseFloat(props.prots) ? true : false)
+const isProt = ref(parseFloat(props.prots) > parseFloat(props.carbs) ? true : false)
+
+console.log(props.title, props.prots, props.carbs, isProt.value)
+
 const toggleCardInfo = inject('toggleCardInfo')
 </script>
 
@@ -114,7 +117,7 @@ const toggleCardInfo = inject('toggleCardInfo')
 <!-- grid grid-cols-[50px_50px_50px] -->
 <template>
   <Popup v-if="popupOpen" :closePopup="closePopup" :item="props" />
-  <div class="card color-accent relative">
+  <div class="card color-accent relative" :class="{ carb: isCarb, prot: isProt }">
     <div class="card__header" @click="() => toggleCardInfo(props.id)">
       <h2 class="header__title">{{ title }}</h2>
       <div class="header__info">
@@ -278,6 +281,17 @@ const toggleCardInfo = inject('toggleCardInfo')
   opacity: 60%;
 }
 
+.carb {
+  background-color: #c96951;
+  /* background-color: hsl(12, 53%, 75%); */
+}
+.prot {
+  background-color: #379595;
+  /* background-color: hsl(180, 46%, 60%); */
+}
+
+/* ANIMATION START */
+
 .slide-info-enter-active,
 .slide-info-leave-active {
   transition: all 0.4s ease;
@@ -302,4 +316,5 @@ fade-enter-active,
 .fade-leave-to {
   opacity: 0;
 }
+/* ANIMATION END */
 </style>
