@@ -186,7 +186,7 @@ provide('toggleCardInfo', toggleCardInfo)
       </div>
       <div class="bg-primary relative p-2">
         <CardList :items="items" />
-        <MenuBar />
+        <!-- <MenuBar /> -->
       </div>
     </div>
     <button
