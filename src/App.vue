@@ -184,7 +184,7 @@ provide('toggleCardInfo', toggleCardInfo)
           />
         </div>
       </div>
-      <div class="bg-primary relative p-2">
+      <div class="relative p-2">
         <CardList :items="items" />
         <!-- <MenuBar /> -->
       </div>
@@ -207,3 +207,10 @@ provide('toggleCardInfo', toggleCardInfo)
     </button>
   </div>
 </template>
+<style scoped>
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(0deg, hsla(158, 23%, 70%, 1) 0%, hsla(30, 21%, 91%, 1) 100%);
+}
+</style>

@@ -117,7 +117,7 @@ const toggleCardInfo = inject('toggleCardInfo')
 <!-- grid grid-cols-[50px_50px_50px] -->
 <template>
   <Popup v-if="popupOpen" :closePopup="closePopup" :item="props" />
-  <div class="card color-accent relative" :class="{ carb: isCarb, prot: isProt }">
+  <div class="card color-accent relative">
     <div class="card__header" @click="() => toggleCardInfo(props.id)">
       <h2 class="header__title">{{ title }}</h2>
       <div class="header__info">
@@ -125,6 +125,7 @@ const toggleCardInfo = inject('toggleCardInfo')
           <p class="header__bju" v-show="false">Б: {{ prots }} Ж: {{ fats }} У: {{ carbs }}</p>
         </Transition>
         <p class="header__cal color-text-accent">{{ formatDate(dateUpdate) }}</p>
+        <div class="circle" :class="{ carb: isCarb, prot: isProt }"></div>
       </div>
     </div>
     <Transition name="slide-info" mode="out-in">
@@ -288,6 +289,16 @@ const toggleCardInfo = inject('toggleCardInfo')
 .prot {
   background-color: #379595;
   /* background-color: hsl(180, 46%, 60%); */
+}
+
+.circle {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0.5;
+  /* background: blue; */
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
 }
 
 /* ANIMATION START */

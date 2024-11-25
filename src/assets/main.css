@@ -19,7 +19,7 @@
 
 :root {
   --color-bg-main: #f5f5f5;
-  --color-bg-accent: #fcfcfc;
+  --color-bg-accent: #ece7e2;
   --color-text-main: #202020;
   --color-text-accent: #2f4938;
   --color-accent: #202020;
@@ -44,7 +44,8 @@ html {
 
 body {
   /* background-color: rgb(165 180 252); */
-  background-color: var(--color-bg-main);
+  /* background-color: var(--color-bg-main); */
+  /* background: linear-gradient(0deg, var(--color-text-accent), var(--color-bg-accent)); */
   color: var(--color-text-accent);
   overscroll-behavior: none;
 }
