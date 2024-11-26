@@ -140,6 +140,7 @@ provide('toggleCardInfo', toggleCardInfo)
 </script>
 
 <template>
+  <div class="fixed-background"></div>
   <div class="wrapper fixed relative">
     <Drawer v-if="drawerOpen" />
     <div class="m-1 m-auto">
@@ -209,6 +210,15 @@ provide('toggleCardInfo', toggleCardInfo)
 </template>
 <style scoped>
 .wrapper {
+  /* background-image: linear-gradient(0deg, #a1c4b7 0%, #ede8e3 100%); */
+}
+
+.fixed-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   height: 100%;
   width: 100vw;
   background-image: linear-gradient(
@@ -241,6 +251,6 @@ provide('toggleCardInfo', toggleCardInfo)
   );
   background-size: contain;
   background-attachment: fixed;
-  /* background-image: linear-gradient(0deg, #a1c4b7 0%, #ede8e3 100%); */
+  z-index: -1;
 }
 </style>
