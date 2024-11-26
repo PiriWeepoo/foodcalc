@@ -209,8 +209,38 @@ provide('toggleCardInfo', toggleCardInfo)
 </template>
 <style scoped>
 .wrapper {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  background: linear-gradient(0deg, hsla(158, 23%, 70%, 1) 0%, hsla(30, 21%, 91%, 1) 100%);
+  background-image: linear-gradient(
+    310deg,
+    hsl(158deg 23% 70%) 13%,
+    hsl(157deg 22% 71%) 33%,
+    hsl(156deg 22% 72%) 40%,
+    hsl(156deg 22% 73%) 44%,
+    hsl(155deg 21% 74%) 47%,
+    hsl(154deg 21% 75%) 48%,
+    hsl(153deg 20% 76%) 49%,
+    hsl(152deg 19% 76%) 50%,
+    hsl(151deg 19% 77%) 50%,
+    hsl(149deg 18% 78%) 50%,
+    hsl(147deg 17% 79%) 50%,
+    hsl(145deg 16% 80%) 50%,
+    hsl(143deg 15% 81%) 50%,
+    hsl(140deg 14% 82%) 50%,
+    hsl(136deg 13% 83%) 50%,
+    hsl(130deg 12% 84%) 50%,
+    hsl(123deg 11% 85%) 50%,
+    hsl(113deg 10% 85%) 50%,
+    hsl(102deg 10% 86%) 51%,
+    hsl(89deg 10% 87%) 52%,
+    hsl(75deg 10% 87%) 53%,
+    hsl(60deg 10% 88%) 56%,
+    hsl(46deg 13% 89%) 60%,
+    hsl(37deg 17% 90%) 67%,
+    hsl(30deg 22% 91%) 87%
+  );
+  background-size: contain;
+  background-attachment: fixed;
+  /* background-image: linear-gradient(0deg, #a1c4b7 0%, #ede8e3 100%); */
 }
 </style>
