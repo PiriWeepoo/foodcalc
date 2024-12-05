@@ -209,10 +209,6 @@ provide('toggleCardInfo', toggleCardInfo)
   </div>
 </template>
 <style scoped>
-.wrapper {
-  /* background-image: linear-gradient(0deg, #a1c4b7 0%, #ede8e3 100%); */
-}
-
 .fixed-background {
   position: fixed;
   top: 0;
@@ -221,9 +217,9 @@ provide('toggleCardInfo', toggleCardInfo)
   left: 0;
   height: 100%;
   width: 100vw;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     310deg,
-    hsl(158deg 23% 70%) 13%,
+    #a1c4b7 13%,
     hsl(157deg 22% 71%) 33%,
     hsl(156deg 22% 72%) 40%,
     hsl(156deg 22% 73%) 44%,
@@ -248,6 +244,13 @@ provide('toggleCardInfo', toggleCardInfo)
     hsl(46deg 13% 89%) 60%,
     hsl(37deg 17% 90%) 67%,
     hsl(30deg 22% 91%) 87%
+  ); */
+
+  /* background-image: linear-gradient(310deg, #2f4938 0%, #2f4938 50%, #4a3d30 50%, #4a3d30 100%); */
+  background-image: linear-gradient(
+    -30deg,
+    var(--color-bg-accent) 0%,
+    var(--color-text-accent) 100%
   );
   background-size: contain;
   background-attachment: fixed;
