@@ -252,7 +252,7 @@ provide('toggleCardInfo', toggleCardInfo)
     var(--color-text-accent) 0%,
     var(--color-bg-accent) 100%
   );
-  background-size: contain;
+  /* background-size: contain; */
   background-attachment: fixed;
   z-index: -1;
 }
