@@ -230,7 +230,7 @@ const toggleCardInfo = inject('toggleCardInfo')
 .header__title {
   font-size: 1rem;
   font-weight: 700;
-  width: 300px;
+  /* width: 300px; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

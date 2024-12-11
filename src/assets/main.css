@@ -37,6 +37,9 @@
     --color-light: #ece7e2;
   }
 }
+* {
+  box-sizing: border-box;
+}
 
 html {
   overscroll-behavior: none;
@@ -48,6 +51,7 @@ body {
   /* background: linear-gradient(0deg, var(--color-text-accent), var(--color-bg-accent)); */
   color: var(--color-text-accent);
   overscroll-behavior: none;
+  min-width: 360px;
 }
 
 input::-moz-placeholder,
