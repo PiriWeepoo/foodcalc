@@ -215,8 +215,6 @@ provide('toggleCardInfo', toggleCardInfo)
   right: 0;
   bottom: 0;
   left: 0;
-  height: 100dvh;
-  width: 100dvw;
   /* background-image: linear-gradient(
     310deg,
     #a1c4b7 13%,
