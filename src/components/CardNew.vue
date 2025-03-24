@@ -108,7 +108,7 @@ provide('popupActions', {
 const isCarb = ref(parseFloat(props.carbs) > parseFloat(props.prots) ? true : false)
 const isProt = ref(parseFloat(props.prots) > parseFloat(props.carbs) ? true : false)
 
-console.log(props.title, props.prots, props.carbs, isProt.value)
+// console.log(props.title, props.prots, props.carbs, isProt.value)
 
 const toggleCardInfo = inject('toggleCardInfo')
 </script>
@@ -117,14 +117,14 @@ const toggleCardInfo = inject('toggleCardInfo')
 <!-- grid grid-cols-[50px_50px_50px] -->
 <template>
   <Popup v-if="popupOpen" :closePopup="closePopup" :item="props" />
-  <div class="card color-accent relative">
+  <div class="relative card color-accent">
     <div class="card__header" @click="() => toggleCardInfo(props.id)">
       <h2 class="header__title">{{ title }}</h2>
       <div class="header__info">
         <Transition name="fade" mode="out-in">
           <p class="header__bju" v-show="false">Б: {{ prots }} Ж: {{ fats }} У: {{ carbs }}</p>
         </Transition>
-        <p class="header__cal color-text-accent">{{ formatDate(dateUpdate) }}</p>
+        <p class="color-text-accent header__cal">{{ formatDate(dateUpdate) }}</p>
         <div class="circle" :class="{ carb: isCarb, prot: isProt }"></div>
       </div>
     </div>
@@ -183,7 +183,7 @@ const toggleCardInfo = inject('toggleCardInfo')
           <!-- <p class="">нужно: {{ needWeight }}</p> -->
         </div>
         <button
-          class="info__edit-button color-text-accent absolute bottom-2 right-2 rounded-full"
+          class="right-2 bottom-2 absolute rounded-full color-text-accent info__edit-button"
           @click="openPopup"
         >
           <svg

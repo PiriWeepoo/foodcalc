@@ -2,12 +2,10 @@
 import { onMounted, provide, reactive, ref, watch } from 'vue'
 import axios from 'axios'
 
-import Header from './components/Header.vue'
 import CardList from './components/CardList.vue'
 import Drawer from './components/Drawer.vue'
-import Accordion from './components/Accordion.vue'
-import CardNew from './components/CardNew.vue'
-import MenuBar from './components/MenuBar.vue'
+
+// import MenuBar from './components/MenuBar.vue'
 
 const items = ref([])
 
@@ -57,26 +55,26 @@ const fetchFavorites = async () => {
   }
 }
 
-const addToFavorite = async (item) => {
-  try {
-    if (!item.isFavorite) {
-      const obj = {
-        parentId: item.id
-      }
-      const { data } = await axios.post('https://4b0723948a636cf0.mokky.dev/favorites', obj)
+// const addToFavorite = async (item) => {
+//   try {
+//     if (!item.isFavorite) {
+//       const obj = {
+//         parentId: item.id
+//       }
+//       const { data } = await axios.post('https://4b0723948a636cf0.mokky.dev/favorites', obj)
 
-      item.isFavorite = true
+//       item.isFavorite = true
 
-      item.favoriteId = data.id
-    } else {
-      //  await axios.delete('https://4b0723948a636cf0.mokky.dev/favorites/', obj)
-    }
+//       item.favoriteId = data.id
+//     } else {
+//       //  await axios.delete('https://4b0723948a636cf0.mokky.dev/favorites/', obj)
+//     }
 
-    // console.log(data)
-  } catch (err) {
-    console.log(err)
-  }
-}
+//     // console.log(data)
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
 
 const toggleCardInfo = async (id) => {
   try {
@@ -143,16 +141,16 @@ provide('toggleCardInfo', toggleCardInfo)
   <div class="fixed-background"></div>
   <div class="wrapper">
     <Drawer v-if="drawerOpen" />
-    <div class="m-1 m-auto">
+    <div class="m-1">
       <!-- <Header /> -->
-      <div class="flex items-center justify-between gap-2 p-2">
-        <button class="transition ease-in-out active:rotate-[360deg]" @click="fetchItems">
+      <div class="flex justify-between items-center gap-2 p-2">
+        <button class="active:rotate-[360deg] transition ease-in-out" @click="fetchItems">
           <svg
             height="24"
             viewBox="0 0 513 513"
             width="24"
             xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
+            fill="color-accent"
           >
             <path
               d="M66.074,228.731C81.577,123.379,179.549,50.542,284.901,66.045c35.944,5.289,69.662,20.626,97.27,44.244l-24.853,24.853   c-8.33,8.332-8.328,21.84,0.005,30.17c3.999,3.998,9.423,6.245,15.078,6.246h97.835c11.782,0,21.333-9.551,21.333-21.333V52.39   c-0.003-11.782-9.556-21.331-21.338-21.329c-5.655,0.001-11.079,2.248-15.078,6.246L427.418,65.04   C321.658-29.235,159.497-19.925,65.222,85.835c-33.399,37.467-55.073,83.909-62.337,133.573   c-2.864,17.607,9.087,34.202,26.693,37.066c1.586,0.258,3.188,0.397,4.795,0.417C50.481,256.717,64.002,244.706,66.074,228.731z"
@@ -164,7 +162,7 @@ provide('toggleCardInfo', toggleCardInfo)
         </button>
         <select
           @change="onChangeSelect"
-          class="rounded-md border px-3 py-1 text-[var(--color-accent)] opacity-50 outline-none"
+          class="opacity-50 px-3 py-1 border rounded-md outline-none text-[var(--color-accent)]"
           name=""
           id=""
         >
@@ -175,11 +173,11 @@ provide('toggleCardInfo', toggleCardInfo)
           <option value="-dateUpdate">По обновлению новые</option>
         </select>
         <div class="relative">
-          <img class="absolute left-4 top-2" src="/search.svg" alt="" />
+          <img class="top-2 left-4 absolute" src="/search.svg" alt="" />
           <input
             @focus.passive="$event.target.select()"
             @input="onChangeSearchInput"
-            class="box-border w-full rounded-md border border-current py-1 pl-10 pr-2 text-[var(--color-accent)] opacity-50 outline-none transition-all focus:opacity-100"
+            class="box-border opacity-50 focus:opacity-100 py-1 pr-2 pl-10 border border-current rounded-md outline-none w-full text-[var(--color-accent)] transition-all"
             placeholder="Поиск..."
             type="text"
           />
@@ -191,7 +189,7 @@ provide('toggleCardInfo', toggleCardInfo)
       </div>
     </div>
     <button
-      class="color-text-accent fixed bottom-3 right-3 rounded-full bg-[var(--color-light)] p-0.5 opacity-60 drop-shadow-lg"
+      class="right-3 bottom-3 fixed bg-[var(--color-light)] opacity-60 drop-shadow-lg p-0.5 rounded-full color-text-accent"
       @click="openDrawer"
     >
       <svg
