@@ -205,14 +205,14 @@ const toggleCardInfo = inject('toggleCardInfo')
 
 <style scoped>
 .card {
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* backdrop-filter: blur(10px); */
+  background-color: rgba(235, 235, 235, 0.4);
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
   cursor: pointer;
-  border-radius: 1em;
+  /* border-radius: 1em; */
   /* display: grid; */
   /* outline-offset: -4px; */
-  filter: drop-shadow(0px 1px 2px rgba(20, 20, 20, 0.2));
+  /* filter: drop-shadow(0px 1px 2px rgba(20, 20, 20, 0.2)); */
 }
 
 .card__header {
@@ -257,9 +257,11 @@ const toggleCardInfo = inject('toggleCardInfo')
   grid-template-columns: 70px minmax(0, 1fr) minmax(0, 1fr);
   gap: 0.75rem;
   padding: 0.5rem 0.5rem;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  /* border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem; */
   max-height: 120px;
+  background-image: linear-gradient(310deg, rgb(235, 235, 235) 0%, rgb(250, 250, 250) 100%);
+  box-shadow: 0px -8px 8px -7px rgba(41, 41, 41, 0.2) inset;
 }
 
 .card-input {

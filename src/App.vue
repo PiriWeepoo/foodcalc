@@ -141,7 +141,7 @@ provide('toggleCardInfo', toggleCardInfo)
   <div class="fixed-background"></div>
   <div class="wrapper">
     <Drawer v-if="drawerOpen" />
-    <div class="m-1">
+    <div class="">
       <!-- <Header /> -->
       <div class="flex justify-between items-center gap-2 p-2">
         <button class="active:rotate-[360deg] transition ease-in-out" @click="fetchItems">
@@ -183,7 +183,7 @@ provide('toggleCardInfo', toggleCardInfo)
           />
         </div>
       </div>
-      <div class="relative p-2">
+      <div class="relative">
         <CardList :items="items" />
         <!-- <MenuBar /> -->
       </div>
@@ -243,12 +243,13 @@ provide('toggleCardInfo', toggleCardInfo)
   ); */
 
   /* background-image: linear-gradient(310deg, #2f4938 0%, #2f4938 50%, #4a3d30 50%, #4a3d30 100%); */
-  background-image: linear-gradient(
-    -30deg,
+  /* background-image: linear-gradient( */
+  /* -30deg,
     var(--color-text-accent) 0%,
     var(--color-bg-accent) 100%
-  );
+  ); */
   /* background-size: contain; */
+  background: rgb(235, 235, 235);
   background-attachment: fixed;
   z-index: -1;
 }
