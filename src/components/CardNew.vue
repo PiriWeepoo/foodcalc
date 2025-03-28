@@ -260,7 +260,7 @@ const toggleCardInfo = inject('toggleCardInfo')
   /* border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem; */
   max-height: 120px;
-  background-image: linear-gradient(310deg, rgb(235, 235, 235) 0%, rgb(250, 250, 250) 100%);
+  background-image: linear-gradient(180deg, rgb(235, 235, 235) 20%, rgb(250, 250, 250) 80%);
   box-shadow: 0px -8px 8px -7px rgba(41, 41, 41, 0.2) inset;
 }
 
