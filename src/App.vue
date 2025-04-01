@@ -111,9 +111,7 @@ const fetchItems = async () => {
     })
 
     items.value = data.map((obj) => ({
-      ...obj,
-      isFavorite: false,
-      isOpen: false
+      ...obj
     }))
   } catch (err) {
     console.log(err)

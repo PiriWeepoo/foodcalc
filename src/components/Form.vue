@@ -1,20 +1,20 @@
 <script setup>
 import axios from 'axios'
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { inject } from 'vue'
 
 const props = defineProps({
   id: Number,
   title: { type: String, default: '' },
-  calories: { type: String, default: '' },
-  prots: { type: String, default: '' },
-  fats: { type: String, default: '' },
-  carbs: { type: String, default: '' },
-  rate: { type: String, default: '' },
+  calories: { type: Number, default: 0 },
+  prots: { type: Number, default: 0 },
+  fats: { type: Number, default: 0 },
+  carbs: { type: Number, default: 0 },
+  rate: { type: Number, default: 0 },
 
-  ready: { type: String, default: '' },
+  ready: { type: Number, default: 0 },
 
-  raw: { type: String, default: '' },
+  raw: { type: Number, default: 0 },
   typeForm: String
 })
 
@@ -81,89 +81,89 @@ const submitForm = () => {
 
 <template>
   <div
-    class="form r gap-3transition-all relative z-10 flex w-full shrink-0 cursor-pointer snap-start flex-col items-center justify-center duration-300"
+    class="z-10 relative flex flex-col justify-center items-center gap-3transition-all w-full duration-300 snap-start cursor-pointer form r shrink-0"
   >
     <div class="w-full">
       <form @submit.prevent="submitForm" class="flex flex-col gap-3">
         <div class="flex flex-col items-start">
-          <label for="title" class="text-sm font-semibold">Название</label>
+          <label for="title" class="font-semibold text-sm">Название</label>
           <input
             v-model="foods.title"
             name="title"
             type="text"
             placeholder="Введите название"
-            class="w-full rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-inset"
+            class="bg-transparent placeholder:opacity-90 py-px pl-0 border-0 border-current focus:border-[var(--color-accent)] border-b-2 rounded-none outline-none focus:outline-none focus:ring-inset w-full placeholder:text-xs"
           />
         </div>
 
-        <div class="grid grid-cols-3 gap-4">
+        <div class="gap-4 grid grid-cols-3">
           <div class="flex flex-col">
-            <label for="calories" class="text-sm font-semibold">Калории</label>
+            <label for="calories" class="font-semibold text-sm">Калории</label>
             <input
               v-model.number="foods.calories"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="decimal"
               placeholder="в 100г."
-              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
+              class="box-border bg-transparent placeholder:opacity-90 py-px pl-0 border-0 border-current focus:border-[var(--color-accent)] border-b-2 rounded-none outline-none focus:outline-none focus:ring-0 placeholder:text-xs"
             />
           </div>
           <div class="flex flex-col">
-            <label for="rate" class="text-sm font-semibold">Сырое</label>
+            <label for="rate" class="font-semibold text-sm">Сырое</label>
             <input
               v-model.number="foods.raw"
               @focusin="$event.target.select()"
               type="text"
               inputmode="decimal"
               placeholder="г."
-              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
+              class="box-border bg-transparent placeholder:opacity-90 py-px pl-0 border-0 border-current focus:border-[var(--color-accent)] border-b-2 rounded-none outline-none focus:outline-none focus:ring-0 placeholder:text-xs"
             />
           </div>
           <div class="flex flex-col">
-            <label for="rate" class="text-sm font-semibold">Готовое</label>
+            <label for="rate" class="font-semibold text-sm">Готовое</label>
             <input
               v-model.number="foods.ready"
               @focusin="$event.target.select()"
               type="text"
               inputmode="decimal"
               placeholder="г."
-              class="box-border rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
+              class="box-border bg-transparent placeholder:opacity-90 py-px pl-0 border-0 border-current focus:border-[var(--color-accent)] border-b-2 rounded-none outline-none focus:outline-none focus:ring-0 placeholder:text-xs"
             />
           </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-4">
-          <div class="flex w-full flex-col items-start">
-            <label for="prots" class="text-sm font-semibold">Белки</label>
+        <div class="gap-4 grid grid-cols-3">
+          <div class="flex flex-col items-start w-full">
+            <label for="prots" class="font-semibold text-sm">Белки</label>
             <input
               v-model.number="foods.prots"
               @focusin="$event.target.select()"
               type="text"
               inputmode="decimal"
               placeholder="в 100г."
-              class="w-full rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
+              class="bg-transparent placeholder:opacity-90 py-px pl-0 border-0 border-current focus:border-[var(--color-accent)] border-b-2 rounded-none outline-none focus:outline-none focus:ring-0 w-full placeholder:text-xs"
             />
           </div>
-          <div class="flex w-full flex-col items-start">
-            <label for="fats" class="text-sm font-semibold">Жиры</label>
+          <div class="flex flex-col items-start w-full">
+            <label for="fats" class="font-semibold text-sm">Жиры</label>
             <input
               v-model.number="foods.fats"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="decimal"
               placeholder="в 100г."
-              class="w-full rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
+              class="bg-transparent placeholder:opacity-90 py-px pl-0 border-0 border-current focus:border-[var(--color-accent)] border-b-2 rounded-none outline-none focus:outline-none focus:ring-0 w-full placeholder:text-xs"
             />
           </div>
-          <div class="flex w-full flex-col items-start">
-            <label for="carbs" class="text-sm font-semibold">Углеводы</label>
+          <div class="flex flex-col items-start w-full">
+            <label for="carbs" class="font-semibold text-sm">Углеводы</label>
             <input
               v-model.number="foods.carbs"
               @focus.native="$event.target.select()"
               type="text"
               inputmode="decimal"
               placeholder="в 100г."
-              class="form-input w-full rounded-none border-0 border-b-2 border-current bg-transparent py-px pl-0 outline-none placeholder:text-xs placeholder:opacity-90 focus:border-[var(--color-accent)] focus:outline-none focus:ring-0"
+              class="bg-transparent placeholder:opacity-90 py-px pl-0 border-0 border-current focus:border-[var(--color-accent)] border-b-2 rounded-none outline-none focus:outline-none focus:ring-0 w-full placeholder:text-xs form-input"
             />
           </div>
         </div>
@@ -171,7 +171,7 @@ const submitForm = () => {
         <div class="inline-flex items-center gap-5">
           <button
             type="submit"
-            class="hover:transiton color-bg-accent mt-6 w-full rounded-xl py-3 text-sm font-semibold text-[var(--color-light)] shadow-lg shadow-stone-900/40 transition-all hover:scale-105 focus:scale-100 focus:outline-none"
+            class="color-bg-accent shadow-lg shadow-stone-900/40 mt-6 py-3 rounded-xl focus:outline-none w-full font-semibold text-[var(--color-light)] text-sm hover:scale-105 focus:scale-100 transition-all hover:transiton"
           >
             {{ typeForm === 'update' ? 'Сохранить' : 'Добавить' }}
           </button>

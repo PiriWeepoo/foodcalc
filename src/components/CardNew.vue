@@ -5,13 +5,13 @@ import Popup from './Popup.vue'
 const props = defineProps({
   id: Number,
   title: String,
-  calories: String,
-  prots: String,
-  fats: String,
-  carbs: String,
-  rate: String,
-  raw: String,
-  ready: String,
+  calories: Number,
+  prots: Number,
+  fats: Number,
+  carbs: Number,
+  rate: Number,
+  raw: Number,
+  ready: Number,
   isOpen: Boolean,
   dateUpdate: Number,
   isDeleted: Boolean
@@ -38,50 +38,25 @@ const openPopup = () => {
 const changeInputProt = () => {
   const koef = bjuNeed.prots / props.prots //parseFloat((val / props.fats).toFixed(2))
 
-  bjuNeed.fats = parseFloat((props.fats * koef).toFixed(2))
-  bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
-  bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
-
-  // console.clear()
-  // console.log('val=', bjuNeed.prots)
-  // console.log('koef=', koef)
-
-  // console.log('P=', bjuNeed.prots)
-  // console.log('F=', bjuNeed.fats)
-  // console.log('C=', bjuNeed.carbs)
-  // console.log('W=', bjuNeed.weight)
+  bjuNeed.fats = (props.fats * koef).toFixed(2)
+  bjuNeed.carbs = (props.carbs * koef).toFixed(2)
+  bjuNeed.weight = (100 * koef).toFixed(2)
 }
 
 const changeInputCarb = () => {
   const koef = bjuNeed.carbs / props.carbs //parseFloat((val / props.fats).toFixed(2))
 
-  bjuNeed.fats = parseFloat((props.fats * koef).toFixed(2))
-  bjuNeed.prots = parseFloat((props.prots * koef).toFixed(2))
-  bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
-
-  // console.clear()
-  // console.log('koef=', koef)
-
-  // console.log('P=', bjuNeed.prots)
-  // console.log('F=', bjuNeed.fats)
-  // console.log('C=', bjuNeed.carbs)
-  // console.log('W=', bjuNeed.weight)
+  bjuNeed.fats = (props.fats * koef).toFixed(2)
+  bjuNeed.prots = (props.prots * koef).toFixed(2)
+  bjuNeed.weight = (100 * koef).toFixed(2)
 }
 
 const changeInputFat = () => {
   const koef = bjuNeed.fats / props.fats //parseFloat((val / props.fats).toFixed(2))
 
-  bjuNeed.prots = parseFloat((props.prots * koef).toFixed(2))
-  bjuNeed.carbs = parseFloat((props.carbs * koef).toFixed(2))
-  bjuNeed.weight = parseFloat((100 * koef).toFixed(2))
-
-  // console.clear()
-  // console.log('koef=', koef)
-
-  // console.log('P=', bjuNeed.prots)
-  // console.log('F=', bjuNeed.fats)
-  // console.log('C=', bjuNeed.carbs)
-  // console.log('W=', bjuNeed.weight)
+  bjuNeed.prots = (props.prots * koef).toFixed(2)
+  bjuNeed.carbs = (props.carbs * koef).toFixed(2)
+  bjuNeed.weight = (100 * koef).toFixed(2)
 }
 
 //===============================//
@@ -105,8 +80,8 @@ provide('popupActions', {
   openPopup
 })
 
-const isCarb = ref(parseFloat(props.carbs) > parseFloat(props.prots) ? true : false)
-const isProt = ref(parseFloat(props.prots) > parseFloat(props.carbs) ? true : false)
+const isCarb = ref(props.carbs > props.prots ? true : false)
+const isProt = ref(props.prots > props.carbs ? true : false)
 
 // console.log(props.title, props.prots, props.carbs, isProt.value)
 
