@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="grid gap-2">
+  <div class="gap-2">
     <Card
       v-for="item in items"
       :key="item.id"
