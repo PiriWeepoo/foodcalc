@@ -160,7 +160,7 @@ provide('toggleCardInfo', toggleCardInfo)
         </button>
         <select
           @change="onChangeSelect"
-          class="opacity-50 px-3 py-1 border rounded-md outline-none text-[var(--color-accent)]"
+          class="opacity-20 px-3 py-1 border rounded-md outline-none w-1/2 text-[var(--color-accent)]"
           name=""
           id=""
         >
@@ -175,7 +175,7 @@ provide('toggleCardInfo', toggleCardInfo)
           <input
             @focus.passive="$event.target.select()"
             @input="onChangeSearchInput"
-            class="box-border opacity-50 focus:opacity-100 py-1 pr-2 pl-10 border border-current rounded-md outline-none w-full text-[var(--color-accent)] transition-all"
+            class="box-border opacity-20 focus:opacity-100 py-1 pr-2 pl-10 border border-current rounded-md outline-none w-full text-[var(--color-accent)] transition-all"
             placeholder="Поиск..."
             type="text"
           />
@@ -247,7 +247,7 @@ provide('toggleCardInfo', toggleCardInfo)
     var(--color-bg-accent) 100%
   ); */
   /* background-size: contain; */
-  background: rgb(235, 235, 235);
+  background: var(--color-bg-main);
   background-attachment: fixed;
   z-index: -1;
 }

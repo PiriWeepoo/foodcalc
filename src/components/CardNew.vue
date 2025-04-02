@@ -92,7 +92,7 @@ const toggleCardInfo = inject('toggleCardInfo')
 <!-- grid grid-cols-[50px_50px_50px] -->
 <template>
   <Popup v-if="popupOpen" :closePopup="closePopup" :item="props" />
-  <div class="relative card color-accent">
+  <div class="relative card">
     <div class="card__header" @click="() => toggleCardInfo(props.id)">
       <h2 class="header__title">{{ title }}</h2>
       <div class="header__info">
@@ -181,7 +181,7 @@ const toggleCardInfo = inject('toggleCardInfo')
 <style scoped>
 .card {
   /* backdrop-filter: blur(10px); */
-  background-color: rgba(235, 235, 235, 0.4);
+  /* background-color: rgba(235, 235, 235, 0.4); */
   /* border: 1px solid rgba(255, 255, 255, 0.2); */
   cursor: pointer;
   /* border-radius: 1em; */
@@ -204,7 +204,7 @@ const toggleCardInfo = inject('toggleCardInfo')
 
 .header__title {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
   /* width: 300px; */
   white-space: nowrap;
   overflow: hidden;
@@ -232,11 +232,11 @@ const toggleCardInfo = inject('toggleCardInfo')
   grid-template-columns: 70px minmax(0, 1fr) minmax(0, 1fr);
   gap: 0.75rem;
   padding: 0.5rem 0.5rem;
-  /* border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem; */
   max-height: 120px;
-  background-image: linear-gradient(180deg, rgb(235, 235, 235) 20%, rgb(250, 250, 250) 80%);
-  box-shadow: 0px -8px 8px -7px rgba(41, 41, 41, 0.2) inset;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0px -8px 8px -5px rgba(0, 0, 0, 0.3) inset,
+    0px 8px 8px -5px rgba(0, 0, 0, 0.3) inset;
 }
 
 .card-input {
